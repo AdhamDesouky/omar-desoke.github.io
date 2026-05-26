@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/', // root domain deployment for omar-desoke.github.io
+  base: '/omar-desoke.github.io/', // configured subdirectory base path for AdhamDesouky's project page
   build: {
     outDir: 'dist'
   }
