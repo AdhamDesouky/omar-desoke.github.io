@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Dynamic Data parameters
     let currentSelectedPackage = {
         name: 'Velocity',
-        price: '2000',
+        price: '2400',
         token: ''
     };
     
@@ -346,9 +346,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Translated package names map for step indicators
             const arPkgNames = {
-                'Kickstart': 'كيك ستارت (الفئة الأولى)',
-                'Velocity': 'فيلوسيتي (الفئة الثانية)',
-                'Apex': 'أبيكس (الفئة الثالثة)'
+                'Kickstart': 'كيك ستارت',
+                'Velocity': 'فيلوسيتي',
+                'Apex': 'أبيكس'
             };
             const pkgNameAr = arPkgNames[pkgName] || pkgName;
             
@@ -516,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
             waText = `Hello Coach Omar Desoke,
 My name is *${clientName}*. I am ready to Own Your System!
 
-I have selected the *Tier ${currentSelectedPackage.name === 'Kickstart' ? '01' : currentSelectedPackage.name === 'Velocity' ? '02' : '03'}: ${currentSelectedPackage.name}* Package (3 Months) for *${parseFloat(currentSelectedPackage.price).toLocaleString()} EGP*.
+I have selected the *${currentSelectedPackage.name}* Package (3 Months) for *${parseFloat(currentSelectedPackage.price).toLocaleString()} EGP*.
 
 Client Details:
 - WhatsApp Contact: ${clientPhone}
