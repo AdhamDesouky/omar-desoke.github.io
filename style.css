@@ -2199,3 +2199,154 @@ h1, h2, h3, h4, h5, h6 {
     background-size: cover;
     background-position: center;
 }
+
+/* ==========================================================================
+   BILINGUAL DUAL-LANGUAGE STYLING & DIRECTORY FLIPS
+   ========================================================================== */
+
+/* --- 1. Dynamic Toggle Engine --- */
+html.lang-en .lang-ar { display: none !important; }
+html.lang-ar .lang-en { display: none !important; }
+
+/* --- 2. Root Language Overrides --- */
+html.lang-en {
+    direction: ltr;
+}
+
+html.lang-ar {
+    direction: rtl;
+}
+
+html.lang-ar body,
+html.lang-ar .btn,
+html.lang-ar input,
+html.lang-ar select,
+html.lang-ar textarea,
+html.lang-ar .form-control {
+    font-family: var(--font-arabic);
+}
+
+/* --- 3. Language Switcher Pill (Glassmorphic) --- */
+.lang-switcher-pill {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border-white);
+    padding: 2px;
+    position: relative;
+    z-index: 10;
+    width: 105px;
+    height: 34px;
+    margin-left: 1rem;
+    clip-path: polygon(0 0, 90% 0, 100% 30%, 100% 100%, 10% 100%, 0 70%);
+}
+
+.lang-btn-switcher {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--color-grey-muted);
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 900;
+    cursor: pointer;
+    text-align: center;
+    z-index: 2;
+    transition: var(--transition-fast);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lang-btn-switcher.active {
+    color: var(--bg-base);
+    font-weight: 900;
+}
+
+/* Sliding active background marker */
+.lang-toggle-bg {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: calc(50% - 2px);
+    height: calc(100% - 4px);
+    background-color: var(--color-primary);
+    z-index: 1;
+    transition: var(--transition-smooth);
+    clip-path: polygon(0 0, 88% 0, 100% 25%, 100% 100%, 12% 100%, 0 75%);
+}
+
+/* Slide to right for Arabic active state */
+html.lang-ar .lang-toggle-bg {
+    left: calc(50%);
+}
+
+/* Mobile Switcher Placement */
+.mobile-lang-pill {
+    margin: 1.5rem 0 0.5rem;
+    width: 100%;
+    height: 40px;
+}
+
+/* --- 4. Layout Direction Mirror Adaptations --- */
+
+/* Story Box Border Flip */
+html.lang-en .story-box-ar {
+    border-left: 4px solid var(--color-primary);
+    border-right: none;
+    padding-left: 2rem;
+    padding-right: 0;
+}
+
+html.lang-ar .story-box-ar {
+    border-right: 4px solid var(--color-primary);
+    border-left: none;
+    padding-right: 2rem;
+    padding-left: 0;
+}
+
+/* Bullet list icon alignments */
+html.lang-ar .package-features li {
+    text-align: right;
+}
+
+html.lang-ar .feat-icon {
+    order: 0; /* Natural flow in RTL works */
+}
+
+/* Clipboard Copy Button Alignment */
+html.lang-ar .clipboard-box {
+    padding: 0.4rem 1.2rem 0.4rem 0.4rem;
+}
+
+/* Chevron scroller animations adjustments */
+html.lang-ar .chevron-scroller {
+    margin-top: 4.5rem;
+}
+
+/* General Layout tweaks when RTL is active */
+html.lang-ar .hero-content {
+    align-items: flex-start; /* Matches right-to-left layout alignment */
+}
+
+html.lang-ar .card-number {
+    text-align: left;
+}
+
+html.lang-ar .tdee-number-wrap {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+html.lang-ar .results-lockup {
+    clip-path: polygon(0 0, 100% 0, 100% 93%, 92% 100%, 0 100%, 0 7%);
+}
+
+/* Alignment adjustments for mobile viewports */
+@media (max-width: 900px) {
+    html.lang-ar .hero-content {
+        align-items: center;
+    }
+}
+

@@ -54,7 +54,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- 2. Interactive Before/After Comparison Slider ---
+    // --- 2. Dynamic Bilingual Language Switching Logic ---
+    let currentLang = localStorage.getItem('omar_pt_lang') || 'en';
+
+    const setLanguage = (lang) => {
+        currentLang = lang;
+        localStorage.setItem('omar_pt_lang', lang);
+
+        const htmlRoot = document.documentElement;
+        htmlRoot.classList.remove('lang-en', 'lang-ar');
+        htmlRoot.classList.add(`lang-${lang}`);
+        htmlRoot.setAttribute('lang', lang);
+
+        // Update all language switcher toggle buttons active states
+        const switcherPills = document.querySelectorAll('.lang-switcher-pill');
+        switcherPills.forEach(pill => {
+            const btnEn = pill.querySelector('[data-lang="en"]');
+            const btnAr = pill.querySelector('[data-lang="ar"]');
+            if (lang === 'en') {
+                btnEn.classList.add('active');
+                btnAr.classList.remove('active');
+            } else {
+                btnAr.classList.add('active');
+                btnEn.classList.remove('active');
+            }
+        });
+    };
+
+    // Attach click listeners to switcher buttons
+    const langBtns = document.querySelectorAll('.lang-btn-switcher');
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const selectedLang = btn.getAttribute('data-lang');
+            setLanguage(selectedLang);
+        });
+    });
+
+    // Run initial language setup on page load
+    setLanguage(currentLang);
+
+
+    // --- 3. Interactive Before/After Comparison Slider ---
     const slider = document.getElementById('before-after-slider');
     const afterImgWrap = document.getElementById('after-img-wrap');
     const sliderHandle = document.getElementById('slider-handle');
@@ -106,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 3. Operational Guidelines Panel Selector & Water Estimator ---
+    // --- 4. Operational Guidelines Panel Selector & Water Estimator ---
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabPanels = document.querySelectorAll('.tab-panel');
     
@@ -151,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 4. High-End Macro & Calorie Calculator Logic ---
+    // --- 5. High-End Macro & Calorie Calculator Logic ---
     const macroForm = document.getElementById('macro-form');
     const targetCaloriesDisplay = document.getElementById('target-calories');
     const goalSubtext = document.getElementById('goal-subtext');
@@ -207,39 +247,37 @@ document.addEventListener('DOMContentLoaded', () => {
             let goalLabel = '';
             
             if (goal === 'loss') {
-                // Optimized 20% deficit for maximum fat loss without muscle catabolism
                 targetCalories = Math.round(tdee * 0.8);
-                // Clamp safe minimal budgets
                 const minCal = (gender === 'male') ? 1500 : 1200;
                 if (targetCalories < minCal) targetCalories = minCal;
-                goalLabel = "Optimized with a precise 20% caloric deficit to accelerate metabolic fat burning.";
+                
+                goalLabel = (currentLang === 'ar') 
+                    ? "محسوبة بعجز سعرات مدروس بنسبة 20% لتحفيز حرق الدهون العضلية بأقصى كفاءة."
+                    : "Optimized with a precise 20% caloric deficit to accelerate metabolic fat burning.";
             } else if (goal === 'recomp') {
-                // Caloric maintenance for body recomposition
                 targetCalories = tdee;
-                goalLabel = "Maintenance calorie baseline optimized to fuel intense strength training and build muscle while melting abdominal fat.";
+                
+                goalLabel = (currentLang === 'ar')
+                    ? "مستوى سعرات الثبات للحفاظ على الطاقة، لبناء الكتلة العضلية مع تذويب الشحوم المحيطة بالعضلات."
+                    : "Maintenance calorie baseline optimized to fuel intense strength training and build muscle while melting abdominal fat.";
             } else if (goal === 'gain') {
-                // Lean caloric surplus for hypertrophy
                 targetCalories = Math.round(tdee + 300);
-                goalLabel = "Lean muscle surplus designed to fuel muscle tissue growth while minimizing fat gain.";
+                
+                goalLabel = (currentLang === 'ar')
+                    ? "مستوى فائض سعرات خفيف لبناء وتضخيم الألياف العضلية مع الحد الأدنى من كسب الدهون."
+                    : "Lean muscle surplus designed to fuel muscle tissue growth while minimizing fat gain.";
             }
             
             // Biomechanics Signature Macro Formula
-            // Protein: High targeting 2.2g per kg bodyweight
             let proteinGrams = Math.round(weight * 2.2);
-            // Fats: 0.9g per kg bodyweight
             let fatGrams = Math.round(weight * 0.9);
-            
-            // Calories from protein/fats
             let proteinCals = proteinGrams * 4;
             let fatCals = fatGrams * 9;
             
-            // Remaining calories allocated to Carbs
             let remainingCals = targetCalories - (proteinCals + fatCals);
             let carbGrams = Math.round(remainingCals / 4);
             
-            // Safety fallback if remaining calories is extremely tight
             if (carbGrams < 50) {
-                // Fallback to classic athletic percentage splits (40% carbs, 30% protein, 30% fat)
                 proteinGrams = Math.round((targetCalories * 0.30) / 4);
                 fatGrams = Math.round((targetCalories * 0.30) / 9);
                 carbGrams = Math.round((targetCalories * 0.40) / 4);
@@ -272,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 5. Egyptian Market Instapay & WhatsApp Checkout System ---
+    // --- 6. Egyptian Market Instapay & WhatsApp Checkout System ---
     const checkoutModal = document.getElementById('checkout-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
     const pkgTriggers = document.querySelectorAll('.checkout-trigger-btn');
@@ -305,10 +343,21 @@ document.addEventListener('DOMContentLoaded', () => {
             
             currentSelectedPackage.name = pkgName;
             currentSelectedPackage.price = pkgPrice;
+
+            // Translated package names map for step indicators
+            const arPkgNames = {
+                'Kickstart': 'كيك ستارت (الفئة الأولى)',
+                'Velocity': 'فيلوسيتي (الفئة الثانية)',
+                'Apex': 'أبيكس (الفئة الثالثة)'
+            };
+            const pkgNameAr = arPkgNames[pkgName] || pkgName;
             
-            // Set initial dynamic fields in Modal Step 1
+            // Set initial dynamic fields in Modal Step 1 (Bilingual wrappers)
             document.getElementById('selected-package-name').textContent = pkgName;
             document.getElementById('selected-package-price').textContent = `${parseFloat(pkgPrice).toLocaleString()} EGP`;
+            
+            document.getElementById('selected-package-name-ar').textContent = pkgNameAr;
+            document.getElementById('selected-package-price-ar').textContent = `${parseFloat(pkgPrice).toLocaleString()} جنيه مصري`;
             
             // Open Modal
             checkoutModal.classList.add('active');
@@ -369,9 +418,21 @@ document.addEventListener('DOMContentLoaded', () => {
             clientPhoneInput.style.borderColor = '';
         }
         
-        // Hydrate Step 2 billing texts
-        document.getElementById('billing-package-name').textContent = currentSelectedPackage.name;
-        document.getElementById('billing-package-price').textContent = `${parseFloat(currentSelectedPackage.price).toLocaleString()} EGP`;
+        // Hydrate Step 2 billing texts (Dynamic bilingual display)
+        const arPkgNames = {
+            'Kickstart': 'كيك ستارت (الفئة الأولى)',
+            'Velocity': 'فيلوسيتي (الفئة الثانية)',
+            'Apex': 'أبيكس (الفئة الثالثة)'
+        };
+        const pkgNameAr = arPkgNames[currentSelectedPackage.name] || currentSelectedPackage.name;
+
+        if (currentLang === 'ar') {
+            document.getElementById('billing-package-name').textContent = pkgNameAr;
+            document.getElementById('billing-package-price').textContent = `${parseFloat(currentSelectedPackage.price).toLocaleString()} جنيه مصري`;
+        } else {
+            document.getElementById('billing-package-name').textContent = currentSelectedPackage.name;
+            document.getElementById('billing-package-price').textContent = `${parseFloat(currentSelectedPackage.price).toLocaleString()} EGP`;
+        }
         
         goToStep(1);
     });
@@ -402,12 +463,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         navigator.clipboard.writeText(instapayAddress).then(() => {
             // success feedback
-            copyBtnText.textContent = 'COPIED!';
+            copyBtnText.textContent = (currentLang === 'ar') ? 'تم النسخ!' : 'COPIED!';
             copyAddressBtn.style.backgroundColor = '#FFFFFF';
             copyAddressBtn.style.color = '#0B0B0C';
             
             setTimeout(() => {
-                copyBtnText.textContent = 'COPY';
+                copyBtnText.textContent = (currentLang === 'ar') ? 'نسخ' : 'COPY';
                 copyAddressBtn.style.backgroundColor = '';
                 copyAddressBtn.style.color = '';
             }, 2500);
@@ -416,19 +477,43 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // WhatsApp Redirect Redirection compiler
+    // WhatsApp Redirect Redirection compiler (Bilingual template engines)
     const whatsappConfirmBtn = document.getElementById('whatsapp-confirm-btn');
     
     whatsappConfirmBtn.addEventListener('click', () => {
         const clientName = document.getElementById('client-name').value.trim();
         const clientPhone = document.getElementById('client-phone').value.trim();
-        const clientNotes = document.getElementById('client-notes').value.trim() || 'No additional notes.';
+        const clientNotes = document.getElementById('client-notes').value.trim() || ((currentLang === 'ar') ? 'لا توجد ملاحظات إضافية.' : 'No additional notes.');
         
         // Coach details
         const coachPhone = '201129808526'; // Redirection number
         
-        // Message template
-        const waText = `Hello Coach Omar Desouky,
+        // Package name in Arabic
+        const arPkgNames = {
+            'Kickstart': 'كيك ستارت (الفئة الأولى)',
+            'Velocity': 'فيلوسيتي (الفئة الثانية)',
+            'Apex': 'أبيكس (الفئة الثالثة)'
+        };
+        const pkgNameAr = arPkgNames[currentSelectedPackage.name] || currentSelectedPackage.name;
+
+        // Compile Arabic or English pre-filled messages
+        let waText = '';
+        if (currentLang === 'ar') {
+            waText = `مرحباً كابتن عمر دسوقي،
+أنا الاسم: *${clientName}*. ومستعد لتمكين نظامي البدني الخاص!
+
+لقد اخترت باقة: *${pkgNameAr}* (٣ أشهر) بقيمة *${parseFloat(currentSelectedPackage.price).toLocaleString()} جنيه مصري*.
+
+تفاصيل العميل:
+- رقم الواتساب: ${clientPhone}
+- الهدف البدني والملاحظات: "${clientNotes}"
+- رمز التسجيل بالنظام: ${currentSelectedPackage.token}
+
+لقد قمت بإتمام عملية التحويل بنجاح بقيمة *${parseFloat(currentSelectedPackage.price).toLocaleString()} جنيه* إلى حساب إنستاباي: *omardesoke@instapay*.
+
+أرسل هذه الرسالة لتأكيد وحجز مكاني بالسيستم! مرفق لقطة الشاشة لإيصال التحويل:`;
+        } else {
+            waText = `Hello Coach Omar Desouky,
 My name is *${clientName}*. I am ready to Own Your System!
 
 I have selected the *Tier ${currentSelectedPackage.name === 'Kickstart' ? '01' : currentSelectedPackage.name === 'Velocity' ? '02' : '03'}: ${currentSelectedPackage.name}* Package (3 Months) for *${parseFloat(currentSelectedPackage.price).toLocaleString()} EGP*.
@@ -441,6 +526,7 @@ Client Details:
 I have successfully completed the Instapay transfer of *${parseFloat(currentSelectedPackage.price).toLocaleString()} EGP* to *omardesoke@instapay*. 
 
 Sending this to lock in my coaching slot! Here is my receipt screenshot:`;
+        }
 
         // URL Encoded link compilation
         const encodedText = encodeURIComponent(waText);
@@ -454,8 +540,7 @@ Sending this to lock in my coaching slot! Here is my receipt screenshot:`;
     });
 
 
-    // --- 6. Scroll Reveal Animations (High-performance Intersection Observer) ---
-    // Target both standard blocks and cards
+    // --- 7. Scroll Reveal Animations (High-performance Intersection Observer) ---
     const animatedElements = document.querySelectorAll('.fade-in-element, .scroll-reveal-card');
     
     if ('IntersectionObserver' in window) {
@@ -481,7 +566,7 @@ Sending this to lock in my coaching slot! Here is my receipt screenshot:`;
     }
 
 
-    // --- 7. Sticky Footer CTA Reveal logic ---
+    // --- 8. Sticky Footer CTA Reveal logic ---
     const pricingSection = document.getElementById('packages');
     const stickyCTA = document.querySelector('.sticky-footer-cta');
     
@@ -492,7 +577,6 @@ Sending this to lock in my coaching slot! Here is my receipt screenshot:`;
         const pricingTop = pricingSection.offsetTop;
         const pricingBottom = pricingTop + pricingSection.offsetHeight;
         
-        // Show sticky banner after scrolling past 600px, but hide it when reaching the package cards themselves to avoid clutter
         if (window.scrollY > 600 && (scrollPosition < pricingTop || window.scrollY > pricingBottom)) {
             stickyCTA.classList.add('active');
         } else {

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="lang-en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omar Desouky | Own Your System | Elite Biomechanics & Fitness Coach</title>
+    <title>Omar Desouky | Own Your System | Elite Fitness Coach</title>
     <meta name="description" content="Stop guessing, start performing. Coach Omar Desouky's data-driven, precision biomechanics system is designed to build high-performance bodies with zero guesswork. Lose fat, build joint durability, and customize your diet.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <!-- Stylesheet -->
-  <script type="module" crossorigin src="/assets/index-BQhL3G9-.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-CRtcA2OX.css">
+  <script type="module" crossorigin src="/assets/index-DbSSNkm8.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BGMyn0-2.css">
 </head>
 <body class="dark-theme">
     <!-- Background Grid and Chevron Accents -->
@@ -36,23 +36,42 @@
                     <rect x="86" y="10" width="4" height="40" rx="2" fill="#FFE600"/>
                     <!-- Center Fist silhouette integrated with bar -->
                     <circle cx="50" cy="30" r="13" fill="#0B0B0C" stroke="#FFE600" stroke-width="2"/>
-                    <!-- Fist details inside circle -->
-                    <path d="M46 25 h8 v10 h-8 z" fill="#FFFFFF" opacity="0.1"/>
-                    <path d="M44 31 c0-3 2-5 5-5 s5 2 5 5-2 5-5 5-5-2-5-5z" fill="#FFE600" opacity="0.3"/>
                     <!-- Minimal fist icon -->
                     <path d="M47 34 v-5 c0-0.5 0.4-1 1-1 s1 0.5 1 1 v5 M49 34 v-6 c0-0.5 0.4-1 1-1 s1 0.5 1 1 v6 M51 34 v-5.5 c0-0.5 0.4-1 1-1 s1 0.5 1 1 v5.5 M53 34 v-4.5 c0-0.5 0.4-1 1-1 s1 0.5 1 1 v4.5 M46 34 h9 v2 a2 2 0 0 1-2 2 h-5 a2 2 0 0 1-2-2 z" fill="#FFFFFF" stroke="#0B0B0C" stroke-width="1"/>
                 </svg>
                 <div class="logo-text">
                     <span class="logo-main">OMAR DESOUKY</span>
-                    <span class="logo-sub">SYSTEM COCHING</span>
+                    <span class="logo-sub">SYSTEM COACHING</span>
                 </div>
             </a>
             <nav class="main-nav">
-                <a href="#philosophy" class="nav-link">Why The System</a>
-                <a href="#guidelines" class="nav-link">Guidelines</a>
-                <a href="#mastermind" class="nav-link">Mastermind</a>
-                <a href="#toolkit" class="nav-link">Calculator</a>
-                <a href="#packages" class="btn btn-secondary nav-btn">View Packages</a>
+                <a href="#philosophy" class="nav-link">
+                    <span class="lang-en">Why The System</span>
+                    <span class="lang-ar">لماذا السيستم</span>
+                </a>
+                <a href="#guidelines" class="nav-link">
+                    <span class="lang-en">Guidelines</span>
+                    <span class="lang-ar">التوجيهات</span>
+                </a>
+                <a href="#mastermind" class="nav-link">
+                    <span class="lang-en">Mastermind</span>
+                    <span class="lang-ar">العقل المدبر</span>
+                </a>
+                <a href="#toolkit" class="nav-link">
+                    <span class="lang-en">Calculator</span>
+                    <span class="lang-ar">الحاسبة</span>
+                </a>
+                <a href="#packages" class="btn btn-secondary nav-btn">
+                    <span class="lang-en">View Packages</span>
+                    <span class="lang-ar">عرض الباقات</span>
+                </a>
+
+                <!-- Floating Language Switcher Pill -->
+                <div class="lang-switcher-pill">
+                    <button class="lang-btn-switcher active" id="lang-btn-en" data-lang="en">EN</button>
+                    <button class="lang-btn-switcher" id="lang-btn-ar" data-lang="ar">عربي</button>
+                    <div class="lang-toggle-bg"></div>
+                </div>
             </nav>
             <button class="mobile-nav-toggle" aria-label="Toggle navigation">
                 <span></span>
@@ -65,11 +84,34 @@
     <!-- Mobile Drawer Menu -->
     <div class="mobile-drawer">
         <nav class="drawer-nav">
-            <a href="#philosophy" class="drawer-link">Why The System</a>
-            <a href="#guidelines" class="drawer-link">Guidelines</a>
-            <a href="#mastermind" class="drawer-link">Mastermind</a>
-            <a href="#toolkit" class="drawer-link">Macro Calculator</a>
-            <a href="#packages" class="btn btn-primary drawer-btn">Own Your System</a>
+            <a href="#philosophy" class="drawer-link">
+                <span class="lang-en">Why The System</span>
+                <span class="lang-ar">لماذا السيستم</span>
+            </a>
+            <a href="#guidelines" class="drawer-link">
+                <span class="lang-en">Guidelines</span>
+                <span class="lang-ar">التوجيهات</span>
+            </a>
+            <a href="#mastermind" class="drawer-link">
+                <span class="lang-en">Mastermind</span>
+                <span class="lang-ar">العقل المدبر</span>
+            </a>
+            <a href="#toolkit" class="drawer-link">
+                <span class="lang-en">Macro Calculator</span>
+                <span class="lang-ar">حاسبة الماكروز</span>
+            </a>
+            
+            <!-- Mobile Language Switcher Pill -->
+            <div class="lang-switcher-pill mobile-lang-pill">
+                <button class="lang-btn-switcher active" id="lang-btn-mobile-en" data-lang="en">EN</button>
+                <button class="lang-btn-switcher" id="lang-btn-mobile-ar" data-lang="ar">عربي</button>
+                <div class="lang-toggle-bg"></div>
+            </div>
+
+            <a href="#packages" class="btn btn-primary drawer-btn">
+                <span class="lang-en">Own Your System</span>
+                <span class="lang-ar">امتلك نظامك الخاص</span>
+            </a>
         </nav>
     </div>
 
@@ -77,19 +119,39 @@
     <section class="hero-section" id="hero">
         <div class="container hero-container">
             <div class="hero-content">
-                <div class="accent-badge fade-in-element">HIGH-PERFORMANCE SYSTEM</div>
+                <div class="accent-badge fade-in-element">
+                    <span class="lang-en">HIGH-PERFORMANCE SYSTEM</span>
+                    <span class="lang-ar">سيستم الأداء العالي</span>
+                </div>
                 <h1 class="hero-title fade-in-element">
-                    OMAR <br><span class="highlight-text">DESOUKY</span>
+                    <span class="lang-en">OMAR <br><span class="highlight-text">DESOUKY</span></span>
+                    <span class="lang-ar">عمر <br><span class="highlight-text">دسوقي</span></span>
                 </h1>
-                <h2 class="hero-subtitle fade-in-element">OWN YOUR SYSTEM</h2>
+                <h2 class="hero-subtitle fade-in-element">
+                    <span class="lang-en">OWN YOUR SYSTEM</span>
+                    <span class="lang-ar">امتلك نظامك الخاص</span>
+                </h2>
                 <p class="hero-description fade-in-element">
-                    The difference between a habit and a system is <strong class="highlight-inline">discipline</strong>. 
-                    This blueprint isn't a suggestion; it's a proven manual for high-performance bodies. 
-                    No bro-science, no guesswork. Just pure, results-driven biomechanics.
+                    <span class="lang-en">
+                        The difference between a habit and a system is <strong class="highlight-inline">discipline</strong>. 
+                        This blueprint isn't a suggestion; it's a proven manual for high-performance bodies. 
+                        No bro-science, no guesswork. Just pure, results-driven biomechanics.
+                    </span>
+                    <span class="lang-ar">
+                        الفرق بين العادة والنظام هو <strong class="highlight-inline">الانضباط</strong>. 
+                        هذا المخطط البدني ليس مجرد اقتراحات عشوائية؛ بل هو دليل عملي مثبت لبناء أجسام فائقة الأداء والقوة. 
+                        بلا خرافات جيم، وبلا تخمين. فقط ميكانيكا حيوية علمية دقيقة لتحقيق النتائج.
+                    </span>
                 </p>
                 <div class="hero-actions fade-in-element">
-                    <a href="#packages" class="btn btn-primary btn-large btn-edge">OWN YOUR SYSTEM</a>
-                    <a href="#philosophy" class="btn btn-outline btn-large">EXPLORE THE PHILOSOPHY</a>
+                    <a href="#packages" class="btn btn-primary btn-large btn-edge">
+                        <span class="lang-en">OWN YOUR SYSTEM</span>
+                        <span class="lang-ar">امتلك نظامك الخاص</span>
+                    </a>
+                    <a href="#philosophy" class="btn btn-outline btn-large">
+                        <span class="lang-en">EXPLORE THE PHILOSOPHY</span>
+                        <span class="lang-ar">اكتشف الفلسفة</span>
+                    </a>
                 </div>
                 <div class="chevron-scroller">
                     <span class="chevron-arrow"></span>
@@ -103,10 +165,9 @@
                 <div class="visual-glow-wrapper">
                     <!-- Edge-cutting yellow frame -->
                     <div class="premium-image-frame">
-                        <!-- CSS/SVG Background visual placeholder (User can replace with physical photo omar_hero.jpg) -->
+                        <!-- Dynamic overlay for physical omar_hero.png -->
                         <div class="image-placeholder omar-hero-placeholder">
                             <div class="placeholder-graphic">
-                                <!-- Abstract muscular silhouette path in SVG -->
                                 <svg viewBox="0 0 100 100" class="svg-placeholder-silhouette">
                                     <defs>
                                         <linearGradient id="silhouette-grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -115,22 +176,36 @@
                                             <stop offset="100%" stop-color="#121214" />
                                         </linearGradient>
                                     </defs>
-                                    <!-- Silhouette graphic -->
                                     <path d="M 50,20 C 53,20 57,25 57,30 C 57,35 54,38 50,38 C 46,38 43,35 43,30 C 43,25 47,20 50,20 Z 
                                              M 50,38 C 45,39 37,42 33,48 C 30,52 28,58 31,64 C 33,67 36,68 39,64 C 41,61 43,53 45,53 C 44,57 43,62 43,68 C 43,76 46,80 50,80 C 54,80 57,76 57,68 C 57,62 56,57 55,53 C 57,53 59,61 61,64 C 64,68 67,67 69,64 C 72,58 70,52 67,48 C 63,42 55,39 50,38 Z" fill="url(#silhouette-grad)"/>
                                 </svg>
-                                <span class="placeholder-tag">[ COACH OMAR PHOTO ]</span>
+                                <span class="placeholder-tag">
+                                    <span class="lang-en">[ COACH OMAR PHOTO ]</span>
+                                    <span class="lang-ar">[ صورة الكابتن عمر ]</span>
+                                </span>
                             </div>
                         </div>
                     </div>
                     <!-- Absolute styled overlay badges mimicking modern HUD -->
                     <div class="hud-badge top-right">
-                        <span class="hud-label">STATUS</span>
-                        <span class="hud-val">100% ELITE</span>
+                        <span class="hud-label">
+                            <span class="lang-en">STATUS</span>
+                            <span class="lang-ar">الحالة</span>
+                        </span>
+                        <span class="hud-val">
+                            <span class="lang-en">100% ELITE</span>
+                            <span class="lang-ar">نخبة بدنية</span>
+                        </span>
                     </div>
                     <div class="hud-badge bottom-left">
-                        <span class="hud-label">BIOMECHANICS</span>
-                        <span class="hud-val">ZERO GUESSWORK</span>
+                        <span class="hud-label">
+                            <span class="lang-en">BIOMECHANICS</span>
+                            <span class="lang-ar">الميكانيكا الحيوية</span>
+                        </span>
+                        <span class="hud-val">
+                            <span class="lang-en">ZERO GUESSWORK</span>
+                            <span class="lang-ar">دون أي تخمين</span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -141,8 +216,14 @@
     <section class="philosophy-section" id="philosophy">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-tag">THE FOUR PILLARS</span>
-                <h2 class="section-title">WHY THIS <span class="highlight-text">SYSTEM?</span></h2>
+                <span class="section-tag">
+                    <span class="lang-en">THE FOUR PILLARS</span>
+                    <span class="lang-ar">الركائز الأربعة للبرنامج</span>
+                </span>
+                <h2 class="section-title">
+                    <span class="lang-en">WHY THIS <span class="highlight-text">SYSTEM?</span></span>
+                    <span class="lang-ar">ليه <span class="highlight-text">السيستم ده؟</span></span>
+                </h2>
                 <div class="section-divider"></div>
             </div>
 
@@ -151,7 +232,10 @@
                 <div class="philosophy-card scroll-reveal-card" data-index="1">
                     <div class="card-number">01</div>
                     <div class="card-content-wrap">
-                        <h3 class="card-title">PRECISION BIOMECHANICS</h3>
+                        <h3 class="card-title">
+                            <span class="lang-en">PRECISION BIOMECHANICS</span>
+                            <span class="lang-ar">دقة الميكانيكا الحيوية</span>
+                        </h3>
                         <p class="card-desc-ar" dir="rtl">
                             كل حركة محسوبة بدقة عشان تستهدف العضلة صح وتحمي مفاصلك من الإصابات.
                         </p>
@@ -166,7 +250,10 @@
                 <div class="philosophy-card scroll-reveal-card" data-index="2">
                     <div class="card-number">02</div>
                     <div class="card-content-wrap">
-                        <h3 class="card-title">ZERO GUESSWORK</h3>
+                        <h3 class="card-title">
+                            <span class="lang-en">ZERO GUESSWORK</span>
+                            <span class="lang-ar">بدون تخمين عشوائي</span>
+                        </h3>
                         <p class="card-desc-ar" dir="rtl">
                             أنا بشيل من عليك عبء التفكير والحسابات؛ بديك الخطة كاملة، وإنت عليك التنفيذ بس.
                         </p>
@@ -181,7 +268,10 @@
                 <div class="philosophy-card scroll-reveal-card" data-index="3">
                     <div class="card-number">03</div>
                     <div class="card-content-wrap">
-                        <h3 class="card-title">DATA-DRIVEN DIET</h3>
+                        <h3 class="card-title">
+                            <span class="lang-en">DATA-DRIVEN DIET</span>
+                            <span class="lang-ar">تغذية مبنية على الأرقام</span>
+                        </h3>
                         <p class="card-desc-ar" dir="rtl">
                             أنظمة غذائية منطقية ومبنية على الأرقام؛ بتحرق دهون وتديك طاقة من غير حرمان عشوائي.
                         </p>
@@ -196,7 +286,10 @@
                 <div class="philosophy-card scroll-reveal-card" data-index="4">
                     <div class="card-number">04</div>
                     <div class="card-content-wrap">
-                        <h3 class="card-title">REAL-WORLD PROVEN</h3>
+                        <h3 class="card-title">
+                            <span class="lang-en">REAL-WORLD PROVEN</span>
+                            <span class="lang-ar">نتائج واقعية مجربة</span>
+                        </h3>
                         <p class="card-desc-ar" dir="rtl">
                             سيستم مش مجرد كلام نظري؛ ده نتاج رحلتي الشخصية وخسارة 20 كيلو.. السيستم شغال لأني عشته.
                         </p>
@@ -217,12 +310,18 @@
                 <div class="slider-wrapper">
                     <!-- Before/After Drag Slider Container -->
                     <div class="comparison-slider" id="before-after-slider">
-                        <!-- Before Image Frame (Underneath) -->
+                        <!-- Before Image Frame -->
                         <div class="slider-img img-before">
                             <div class="image-placeholder omar-before-placeholder">
                                 <div class="placeholder-graphic">
-                                    <span class="placeholder-title">BEFORE</span>
-                                    <span class="placeholder-subtitle">Soft / Bulky</span>
+                                    <span class="placeholder-title">
+                                        <span class="lang-en">BEFORE</span>
+                                        <span class="lang-ar">قبل</span>
+                                    </span>
+                                    <span class="placeholder-subtitle">
+                                        <span class="lang-en">Soft / Bulky</span>
+                                        <span class="lang-ar">وزن زائد وخمول</span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -230,8 +329,14 @@
                         <div class="slider-img img-after" id="after-img-wrap">
                             <div class="image-placeholder omar-after-placeholder">
                                 <div class="placeholder-graphic">
-                                    <span class="placeholder-title highlight-text">AFTER</span>
-                                    <span class="placeholder-subtitle">Shredded & Durably Built</span>
+                                    <span class="placeholder-title highlight-text">
+                                        <span class="lang-en">AFTER</span>
+                                        <span class="lang-ar">بعد</span>
+                                    </span>
+                                    <span class="placeholder-subtitle">
+                                        <span class="lang-en">Shredded & Durably Built</span>
+                                        <span class="lang-ar">قوة ونشاط وجسم رياضي</span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -243,41 +348,70 @@
                             <div class="handle-line"></div>
                         </div>
                     </div>
-                    <p class="slider-instruction text-center">← Drag to sweep Before / After →</p>
+                    <p class="slider-instruction text-center">
+                        <span class="lang-en">← Drag to sweep Before / After →</span>
+                        <span class="lang-ar">← اسحب لمشاهدة التحول قبل وبعد →</span>
+                    </p>
                 </div>
             </div>
 
             <div class="mastermind-content-side">
-                <span class="section-tag">MEET THE MASTERMIND</span>
-                <h2 class="section-title">THE ARCHITECT OF <span class="highlight-text">THE SYSTEM</span></h2>
-                <div class="story-box-ar" dir="rtl">
-                    <p class="story-lead">
-                        أنا عمر دسوقي.. وموجود هنا عشان أنا مريت بكل اللي إنت بتمر بيه دلوقتي.
-                    </p>
-                    <p class="story-body">
-                        أنا موصلتش للجسم ده بالصدفة ولا بالجينات؛ أنا وصلت له لما قررت أرمي أي كلام بلدي وأركز في اللي بيجيب نتيجة حقيقية. أنا خسيت 20 كيلو بنفسي وأنا حياتي زحمة ومسئولياتي كتير زيك بالظبط.
-                    </p>
-                    <p class="story-body">
-                        أنا مش مدرب هيديك جدول تمارين وخلاص، أنا مدرب فاهم إزاي نختصر الطريق، ونبطل تخمين، ونوصل لأحسن نسخة من جسمك بأذكى مجهود ممكن. لو زهقت من المحاولات اللي مابتجيبش همها، ومستعد تبدأ جد.. يبقى إنت في المكان الصح يلا بينا.
-                    </p>
+                <span class="section-tag">
+                    <span class="lang-en">MEET THE MASTERMIND</span>
+                    <span class="lang-ar">قابل العقل المدبر</span>
+                </span>
+                <h2 class="section-title">
+                    <span class="lang-en">THE ARCHITECT OF <span class="highlight-text">THE SYSTEM</span></span>
+                    <span class="lang-ar">مهندس هذا <span class="highlight-text">النظام البدني</span></span>
+                </h2>
+                <div class="story-box-ar">
+                    <!-- Dynamic Arabic Story Block -->
+                    <div class="lang-ar" dir="rtl">
+                        <p class="story-lead">
+                            أنا عمر دسوقي.. وموجود هنا عشان أنا مريت بكل اللي إنت بتمر بيه دلوقتي.
+                        </p>
+                        <p class="story-body">
+                            أنا موصلتش للجسم ده بالصدفة ولا بالجينات؛ أنا وصلت له لما قررت أرمي أي كلام بلدي وأركز في اللي بيجيب نتيجة حقيقية. أنا خسيت 20 كيلو بنفسي وأنا حياتي زحمة ومسئولياتي كتير زيك بالظبط.
+                        </p>
+                        <p class="story-body">
+                            أنا مش مدرب هيديك جدول تمارين وخلاص، أنا مدرب فاهم إزاي نختصر الطريق، ونبطل تخمين، ونوصل لأحسن نسخة من جسمك بأذكى مجهود ممكن. لو زهقت من المحاولات اللي مابتجيبش همها، ومستعد تبدأ جد.. يبقى إنت في المكان الصح يلا بينا.
+                        </p>
+                    </div>
+                    <!-- Dynamic English Story Block -->
+                    <div class="lang-en">
+                        <p class="story-lead">
+                            I'm Omar Desouky.. and I'm here because I went through everything you are going through right now.
+                        </p>
+                        <p class="story-body">
+                            I didn't reach this physical state by chance or genetics; I got here when I decided to throw away the bro-science and focus solely on what actually yields results. I lost 20 kg on my own while my schedule was busy and my responsibilities were overwhelming, just like you.
+                        </p>
+                        <p class="story-body">
+                            I'm not a trainer who gives you a standard routine and that's it; I am a coach who understands how to shorten the path, eliminate guesswork, and reach the absolute best version of your body with the smartest effort possible. If you are tired of useless attempts and ready to start seriously, you are in the right place. Let's go!
+                        </p>
+                    </div>
                 </div>
-                <div class="story-box-en">
-                    <p class="story-body-en">
-                        <em>"I am Omar Desouky, and I built this system because I was exactly where you are today. No genetic shortcuts, no bro-science. Only hard, proven biological facts that fit into a busy, high-stress lifestyle. Let's stop guessing and engineer your ultimate physical capacity."</em>
-                    </p>
-                </div>
+                
                 <div class="about-stats">
                     <div class="stat-item">
                         <span class="stat-num">-20KG</span>
-                        <span class="stat-label">Personal Fat Loss</span>
+                        <span class="stat-label">
+                            <span class="lang-en">Personal Fat Loss</span>
+                            <span class="lang-ar">خسارة دهون شخصية</span>
+                        </span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-num">100%</span>
-                        <span class="stat-label">Scientific Biomechanics</span>
+                        <span class="stat-label">
+                            <span class="lang-en">Scientific Biomechanics</span>
+                            <span class="lang-ar">ميكانيكا حيوية علمية</span>
+                        </span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-num">ZERO</span>
-                        <span class="stat-label">Guesswork Dieting</span>
+                        <span class="stat-label">
+                            <span class="lang-en">Guesswork Dieting</span>
+                            <span class="lang-ar">صفر تخمين في الأكل</span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -288,9 +422,18 @@
     <section class="guidelines-section" id="guidelines">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-tag">OPERATIONAL CODE</span>
-                <h2 class="section-title">GENERAL <span class="highlight-text">GUIDELINES</span></h2>
-                <p class="section-subtitle">The baseline habits for high-efficiency fat burning and cellular recovery.</p>
+                <span class="section-tag">
+                    <span class="lang-en">OPERATIONAL CODE</span>
+                    <span class="lang-ar">كود التشغيل اليومي</span>
+                </span>
+                <h2 class="section-title">
+                    <span class="lang-en">GENERAL <span class="highlight-text">GUIDELINES</span></span>
+                    <span class="lang-ar">التوجيهات <span class="highlight-text">العامة للسيستم</span></span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-en">The baseline habits for high-efficiency fat burning and cellular recovery.</span>
+                    <span class="lang-ar">العادات البدنية الأساسية لضمان عمل الحرق والاستشفاء الخلوي بكفاءة قصوى.</span>
+                </p>
                 <div class="section-divider"></div>
             </div>
 
@@ -298,29 +441,42 @@
                 <!-- Navigation Tabs for Guidelines -->
                 <div class="guidelines-tabs">
                     <button class="tab-btn active" data-tab="1">
-                        <span class="tab-num">01</span> SALT
+                        <span class="tab-num">01</span>
+                        <span class="lang-en">SALT</span>
+                        <span class="lang-ar">الملح</span>
                     </button>
                     <button class="tab-btn" data-tab="2">
-                        <span class="tab-num">02</span> DIET SODA
+                        <span class="tab-num">02</span>
+                        <span class="lang-en">DIET SODA</span>
+                        <span class="lang-ar">الصودا دايت</span>
                     </button>
                     <button class="tab-btn" data-tab="3">
-                        <span class="tab-num">03</span> WATER
+                        <span class="tab-num">03</span>
+                        <span class="lang-en">WATER</span>
+                        <span class="lang-ar">المياه</span>
                     </button>
                     <button class="tab-btn" data-tab="4">
-                        <span class="tab-num">04</span> SLEEP
+                        <span class="tab-num">04</span>
+                        <span class="lang-en">SLEEP</span>
+                        <span class="lang-ar">النوم</span>
                     </button>
                     <button class="tab-btn" data-tab="5">
-                        <span class="tab-num">05</span> STEPS
+                        <span class="tab-num">05</span>
+                        <span class="lang-en">STEPS</span>
+                        <span class="lang-ar">الخطوات</span>
                     </button>
                 </div>
 
                 <!-- Tab Panels -->
                 <div class="guidelines-panels">
-                    <!-- Panel 1 -->
+                    <!-- Panel 1: Salt -->
                     <div class="tab-panel active" id="panel-1">
                         <div class="panel-layout">
                             <div class="panel-info">
-                                <h3 class="panel-title">01. SALT INTAKE / كمية الملح</h3>
+                                <h3 class="panel-title">
+                                    <span class="lang-en">01. SALT INTAKE</span>
+                                    <span class="lang-ar">01. كمية الملح اليومية</span>
+                                </h3>
                                 <p class="panel-ar" dir="rtl">
                                     خمسة جرام يومياً (معلقة صغيرة). متمنعوش تماماً عشان تحافظ على توازن الأملاح والأداء في الجيم.
                                 </p>
@@ -333,18 +489,24 @@
                                     <div class="salt-shaker">🧂</div>
                                     <div class="metric-meter">
                                         <div class="meter-bar" style="width: 100%;"></div>
-                                        <span class="meter-label">5g Target Locked</span>
+                                        <span class="meter-label">
+                                            <span class="lang-en">5g Target Locked</span>
+                                            <span class="lang-ar">تم تأمين الـ 5 جرام</span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Panel 2 -->
+                    <!-- Panel 2: Soda -->
                     <div class="tab-panel" id="panel-2">
                         <div class="panel-layout">
                             <div class="panel-info">
-                                <h3 class="panel-title">02. DIET SODA / ZERO DRINKS</h3>
+                                <h3 class="panel-title">
+                                    <span class="lang-en">02. DIET SODA / ZERO DRINKS</span>
+                                    <span class="lang-ar">02. المشروبات الدايت وصفر سعرات</span>
+                                </h3>
                                 <p class="panel-ar" dir="rtl">
                                     مسموح (واحدة أو اتنين بالكتير). بتسد الجوع ومفيهاش سعرات، بس المية هي الأساس.
                                 </p>
@@ -357,18 +519,24 @@
                                     <div class="can-graphic">🥤</div>
                                     <div class="metric-meter">
                                         <div class="meter-bar warning-bar" style="width: 40%;"></div>
-                                        <span class="meter-label">Max 2 Cans Limit</span>
+                                        <span class="meter-label">
+                                            <span class="lang-en">Max 2 Cans Limit</span>
+                                            <span class="lang-ar">الحد الأقصى علبتين فقط</span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Panel 3 -->
+                    <!-- Panel 3: Water -->
                     <div class="tab-panel" id="panel-3">
                         <div class="panel-layout">
                             <div class="panel-info">
-                                <h3 class="panel-title">03. WATER INTAKE / استهلاك المياه</h3>
+                                <h3 class="panel-title">
+                                    <span class="lang-en">03. WATER INTAKE</span>
+                                    <span class="lang-ar">03. استهلاك المياه اليومي</span>
+                                </h3>
                                 <p class="panel-ar" dir="rtl">
                                     من 3 لـ 4 لتر يومياً. ده الحد الأدنى عشان تضمن إن الحرق والسيستم شغالين صح.
                                 </p>
@@ -378,25 +546,34 @@
                             </div>
                             <div class="panel-widget">
                                 <div class="water-calculator-widget">
-                                    <label for="water-weight-input" class="widget-label">Input Weight (kg) for water targets:</label>
+                                    <label for="water-weight-input" class="widget-label">
+                                        <span class="lang-en">Input Weight (kg) for water targets:</span>
+                                        <span class="lang-ar">أدخل وزنك (كيلو) لحساب المياه:</span>
+                                    </label>
                                     <div class="input-inline">
                                         <input type="number" id="water-weight-input" class="widget-input" value="80">
                                         <span class="input-unit">KG</span>
                                     </div>
                                     <div class="widget-result">
                                         <span class="result-number" id="water-result-val">3.2</span>
-                                        <span class="result-unit">Liters/Day Target</span>
+                                        <span class="result-unit">
+                                            <span class="lang-en">Liters/Day Target</span>
+                                            <span class="lang-ar">لتر / الهدف اليومي</span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Panel 4 -->
+                    <!-- Panel 4: Sleep -->
                     <div class="tab-panel" id="panel-4">
                         <div class="panel-layout">
                             <div class="panel-info">
-                                <h3 class="panel-title">04. SLEEP DURATION / ساعات النوم</h3>
+                                <h3 class="panel-title">
+                                    <span class="lang-en">04. SLEEP DURATION</span>
+                                    <span class="lang-ar">04. عدد ساعات النوم</span>
+                                </h3>
                                 <p class="panel-ar" dir="rtl">
                                     من 7 لـ 8 ساعات يومياً. أقل من كده مفيش استشفاء ومفيش نتائج.
                                 </p>
@@ -409,18 +586,24 @@
                                     <div class="sleep-gauge">💤</div>
                                     <div class="metric-meter">
                                         <div class="meter-bar success-bar" style="width: 87%;"></div>
-                                        <span class="meter-label">7.5 Hrs Ideal Recovery</span>
+                                        <span class="meter-label">
+                                            <span class="lang-en">7.5 Hrs Ideal Recovery</span>
+                                            <span class="lang-ar">7.5 ساعات استشفاء مثالي</span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Panel 5 -->
+                    <!-- Panel 5: Steps -->
                     <div class="tab-panel" id="panel-5">
                         <div class="panel-layout">
                             <div class="panel-info">
-                                <h3 class="panel-title">05. DAILY STEPS / الخطوات اليومية</h3>
+                                <h3 class="panel-title">
+                                    <span class="lang-en">05. DAILY STEPS</span>
+                                    <span class="lang-ar">05. عدد الخطوات اليومية</span>
+                                </h3>
                                 <p class="panel-ar" dir="rtl">
                                     من 8,000 لـ 10,000 خطوة. ده الكارديو اللي مبيجوعش وبيرفع معدل حرقك اليومي.
                                 </p>
@@ -432,7 +615,10 @@
                                 <div class="steps-visual">
                                     <div class="step-counter-widget">
                                         <div class="step-odometer">09,420</div>
-                                        <span class="odometer-sub">STEPS DONE</span>
+                                        <span class="odometer-sub">
+                                            <span class="lang-en">STEPS DONE</span>
+                                            <span class="lang-ar">خطوة مكتملة</span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -447,9 +633,18 @@
     <section class="toolkit-section" id="toolkit">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-tag">DATA-DRIVEN DIET</span>
-                <h2 class="section-title">THE MACRO <span class="highlight-text">CALCULATOR</span></h2>
-                <p class="section-subtitle">Calculate your personal daily caloric and macronutrient threshold with zero guesswork.</p>
+                <span class="section-tag">
+                    <span class="lang-en">DATA-DRIVEN DIET</span>
+                    <span class="lang-ar">تغذية دقيقة بالأرقام</span>
+                </span>
+                <h2 class="section-title">
+                    <span class="lang-en">THE MACRO <span class="highlight-text">CALCULATOR</span></span>
+                    <span class="lang-ar">حاسبة <span class="highlight-text">السعرات والماكروز</span></span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-en">Calculate your personal daily caloric and macronutrient threshold with zero guesswork.</span>
+                    <span class="lang-ar">احسب جدول سعراتك وحصص البروتين والدهون والكربوهيدرات المخصصة لك بدون أي تخمين عشوائي.</span>
+                </p>
                 <div class="section-divider"></div>
             </div>
 
@@ -457,93 +652,139 @@
             <div class="calculator-card">
                 <form id="macro-form" class="calculator-grid">
                     <div class="calculator-inputs">
-                        <h3 class="input-header">YOUR BIOMETRICS</h3>
+                        <h3 class="input-header">
+                            <span class="lang-en">YOUR BIOMETRICS</span>
+                            <span class="lang-ar">القياسات الحيوية للسيستم</span>
+                        </h3>
                         
                         <div class="input-group">
-                            <label class="input-label">Gender</label>
+                            <label class="input-label">
+                                <span class="lang-en">Gender</span>
+                                <span class="lang-ar">الجنس</span>
+                            </label>
                             <div class="gender-selection">
                                 <label class="gender-btn active">
-                                    <input type="radio" name="gender" value="male" checked> MALE
+                                    <input type="radio" name="gender" value="male" checked> 
+                                    <span class="lang-en">MALE</span><span class="lang-ar">ذكر</span>
                                 </label>
                                 <label class="gender-btn">
-                                    <input type="radio" name="gender" value="female"> FEMALE
+                                    <input type="radio" name="gender" value="female"> 
+                                    <span class="lang-en">FEMALE</span><span class="lang-ar">أنثى</span>
                                 </label>
                             </div>
                         </div>
 
                         <div class="input-row">
                             <div class="input-group">
-                                <label for="calc-weight" class="input-label">Weight (kg)</label>
+                                <label for="calc-weight" class="input-label">
+                                    <span class="lang-en">Weight (kg)</span><span class="lang-ar">الوزن (كيلو)</span>
+                                </label>
                                 <input type="number" id="calc-weight" class="form-control" value="85" min="40" max="250" required>
                             </div>
                             <div class="input-group">
-                                <label for="calc-height" class="input-label">Height (cm)</label>
+                                <label for="calc-height" class="input-label">
+                                    <span class="lang-en">Height (cm)</span><span class="lang-ar">الطول (سم)</span>
+                                </label>
                                 <input type="number" id="calc-height" class="form-control" value="180" min="100" max="250" required>
                             </div>
                             <div class="input-group">
-                                <label for="calc-age" class="input-label">Age (years)</label>
+                                <label for="calc-age" class="input-label">
+                                    <span class="lang-en">Age (years)</span><span class="lang-ar">العمر (بالسنوات)</span>
+                                </label>
                                 <input type="number" id="calc-age" class="form-control" value="28" min="15" max="90" required>
                             </div>
                         </div>
 
                         <div class="input-group">
-                            <label for="calc-activity" class="input-label">Activity Level</label>
+                            <label for="calc-activity" class="input-label">
+                                <span class="lang-en">Activity Level</span><span class="lang-ar">مستوى النشاط البدني</span>
+                            </label>
                             <select id="calc-activity" class="form-control">
-                                <option value="1.2">Sedentary (Desk job, little to no gym)</option>
-                                <option value="1.375" selected>Lightly Active (Gym 1-3 days/week)</option>
-                                <option value="1.55">Moderately Active (Gym 3-5 days/week intense)</option>
-                                <option value="1.725">Very Active (Gym 6-7 days/week, heavy lifestyle)</option>
+                                <option value="1.2" class="lang-en">Sedentary (Desk job, little to no gym)</option>
+                                <option value="1.2" class="lang-ar">خامل (وظيفة مكتبية، تمرين قليل أو منعدم)</option>
+                                <option value="1.375" class="lang-en" selected>Lightly Active (Gym 1-3 days/week)</option>
+                                <option value="1.375" class="lang-ar" selected>نشاط خفيف (تمرين خفيف في الجيم 1-3 أيام)</option>
+                                <option value="1.55" class="lang-en">Moderately Active (Gym 3-5 days/week intense)</option>
+                                <option value="1.55" class="lang-ar">نشاط متوسط (تمرين شديد في الجيم 3-5 أيام)</option>
+                                <option value="1.725" class="lang-en">Very Active (Gym 6-7 days/week, heavy lifestyle)</option>
+                                <option value="1.725" class="lang-ar">نشاط مكثف (تمرين شديد جداً 6-7 أيام، عمل شاق)</option>
                             </select>
                         </div>
 
                         <div class="input-group">
-                            <label class="input-label">Metabolic Goal</label>
+                            <label class="input-label">
+                                <span class="lang-en">Metabolic Goal</span><span class="lang-ar">الهدف البدني والميتابوليك</span>
+                            </label>
                             <div class="goal-selection">
                                 <label class="goal-btn active">
-                                    <input type="radio" name="goal" value="loss" checked> FAT LOSS
+                                    <input type="radio" name="goal" value="loss" checked> 
+                                    <span class="lang-en">FAT LOSS</span><span class="lang-ar">خسارة دهون</span>
                                 </label>
                                 <label class="goal-btn">
-                                    <input type="radio" name="goal" value="recomp"> BODY RECOMP
+                                    <input type="radio" name="goal" value="recomp"> 
+                                    <span class="lang-en">RECOMP</span><span class="lang-ar">بناء ونحت</span>
                                 </label>
                                 <label class="goal-btn">
-                                    <input type="radio" name="goal" value="gain"> BUILD MUSCLE
+                                    <input type="radio" name="goal" value="gain"> 
+                                    <span class="lang-en">BUILD MUSCLE</span><span class="lang-ar">ضخامة عضلية</span>
                                 </label>
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-full btn-edge mt-2">CALCULATE MY BLUEPRINT</button>
+                        <button type="submit" class="btn btn-primary btn-full btn-edge mt-2">
+                            <span class="lang-en">CALCULATE MY BLUEPRINT</span>
+                            <span class="lang-ar">احسب خطتي البدنية</span>
+                        </button>
                     </div>
 
                     <!-- Calculator Results Section -->
                     <div class="calculator-results" id="calculator-results">
                         <div class="results-lockup">
                             <div class="lockup-bg"></div>
-                            <h3 class="results-header">YOUR PROVEN BUDGET</h3>
+                            <h3 class="results-header">
+                                <span class="lang-en">YOUR PROVEN BUDGET</span>
+                                <span class="lang-ar">ميزانيتك الغذائية المخصصة</span>
+                            </h3>
                             
                             <div class="tdee-display">
-                                <span class="tdee-label">TARGET INTAKE BUDGET</span>
+                                <span class="tdee-label">
+                                    <span class="lang-en">TARGET INTAKE BUDGET</span>
+                                    <span class="lang-ar">إجمالي السعرات اليومية المستهدفة</span>
+                                </span>
                                 <div class="tdee-number-wrap">
                                     <span class="tdee-number" id="target-calories">2,150</span>
-                                    <span class="tdee-unit">kcal / day</span>
+                                    <span class="tdee-unit">
+                                        <span class="lang-en">kcal / day</span>
+                                        <span class="lang-ar">سعر / يوم</span>
+                                    </span>
                                 </div>
-                                <span class="tdee-sub" id="goal-subtext">Optimized with a caloric deficit for targeted fat burning.</span>
+                                <span class="tdee-sub" id="goal-subtext">
+                                    <span class="lang-en">Optimized with a caloric deficit for targeted fat burning.</span>
+                                    <span class="lang-ar">محسوبة بعجز سعرات مدروس لتحفيز حرق الدهون العنيدة.</span>
+                                </span>
                             </div>
 
                             <div class="macros-grid">
                                 <div class="macro-result-card protein">
-                                    <span class="macro-name">PROTEIN</span>
+                                    <span class="macro-name">
+                                        <span class="lang-en">PROTEIN</span><span class="lang-ar">البروتين</span>
+                                    </span>
                                     <span class="macro-value" id="macro-protein">180g</span>
                                     <span class="macro-cal" id="macro-protein-cal">720 kcal</span>
                                     <div class="macro-bar"><span class="bar-fill" style="width: 35%"></span></div>
                                 </div>
                                 <div class="macro-result-card carbs">
-                                    <span class="macro-name">CARBS</span>
+                                    <span class="macro-name">
+                                        <span class="lang-en">CARBS</span><span class="lang-ar">الكربوهيدرات</span>
+                                    </span>
                                     <span class="macro-value" id="macro-carbs">200g</span>
                                     <span class="macro-cal" id="macro-carbs-cal">800 kcal</span>
                                     <div class="macro-bar"><span class="bar-fill" style="width: 40%"></span></div>
                                 </div>
                                 <div class="macro-result-card fats">
-                                    <span class="macro-name">FATS</span>
+                                    <span class="macro-name">
+                                        <span class="lang-en">FATS</span><span class="lang-ar">الدهون الصحية</span>
+                                    </span>
                                     <span class="macro-value" id="macro-fats">70g</span>
                                     <span class="macro-cal" id="macro-fats-cal">630 kcal</span>
                                     <div class="macro-bar"><span class="bar-fill" style="width: 25%"></span></div>
@@ -551,8 +792,14 @@
                             </div>
 
                             <div class="results-cta text-center">
-                                <p class="cta-mini-text">Knowing numbers is 5%. Execution is 95%.</p>
-                                <a href="#packages" class="btn btn-secondary btn-full btn-edge">GET YOUR DIET CUSTOMIZED NOW</a>
+                                <p class="cta-mini-text">
+                                    <span class="lang-en">Knowing numbers is 5%. Execution is 95%.</span>
+                                    <span class="lang-ar">معرفة الأرقام هي 5%. والالتزام بالتنفيذ هو 95%.</span>
+                                </p>
+                                <a href="#packages" class="btn btn-secondary btn-full btn-edge">
+                                    <span class="lang-en">GET YOUR DIET CUSTOMIZED NOW</span>
+                                    <span class="lang-ar">احصل على نظامك الخاص المكتمل الآن</span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -565,9 +812,18 @@
     <section class="packages-section" id="packages">
         <div class="container">
             <div class="section-header text-center">
-                <span class="section-tag">CHOOSE YOUR TIERS</span>
-                <h2 class="section-title">THE BLUEPRINT <span class="highlight-text">PACKAGES</span></h2>
-                <p class="section-subtitle">Pick the absolute custom operational tier that aligns with your physics targets. All packages run for 3 months.</p>
+                <span class="section-tag">
+                    <span class="lang-en">CHOOSE YOUR TIERS</span>
+                    <span class="lang-ar">اختر الباقة المناسبة لك</span>
+                </span>
+                <h2 class="section-title">
+                    <span class="lang-en">THE BLUEPRINT <span class="highlight-text">PACKAGES</span></span>
+                    <span class="lang-ar">باقات <span class="highlight-text">المخطط البدني</span></span>
+                </h2>
+                <p class="section-subtitle">
+                    <span class="lang-en">Pick the absolute custom operational tier that aligns with your physics targets. All packages run for 3 months.</span>
+                    <span class="lang-ar">اختر الفئة التشغيلية المخصصة التي تتماشى تماماً مع أهدافك الجسدية. جميع الباقات تمتد لـ 3 أشهر.</span>
+                </p>
                 <div class="section-divider"></div>
             </div>
 
@@ -576,56 +832,124 @@
                 <div class="package-card" id="pkg-kickstart">
                     <div class="package-accent"></div>
                     <div class="package-header">
-                        <span class="package-tier">TIER 01</span>
+                        <span class="package-tier">
+                            <span class="lang-en">TIER 01</span><span class="lang-ar">الفئة الأولى</span>
+                        </span>
                         <h3 class="package-name">KICKSTART</h3>
                         <div class="package-price">
                             <span class="currency">EGP</span>
                             <span class="price-number">1,500</span>
-                            <span class="duration">/ 3 Months</span>
+                            <span class="duration">
+                                <span class="lang-en">/ 3 Months</span><span class="lang-ar">/ ٣ أشهر</span>
+                            </span>
                         </div>
                     </div>
                     <div class="package-vibe">
-                        <strong>The Vibe:</strong> For clients who are self-motivated but need a highly professional plan and a bi-weekly check-in to stay honest.
+                        <span class="lang-en"><strong>The Vibe:</strong> For clients who are self-motivated but need a highly professional plan and a bi-weekly check-in to stay honest.</span>
+                        <span class="lang-ar"><strong>المحيط العام:</strong> للعملاء ذوي التحفيز الذاتي العالي لكنهم بحاجة لخطة احترافية تماماً ومتابعة نصف شهرية للبقاء على الطريق الصحيح.</span>
                     </div>
                     <ul class="package-features">
-                        <li><span class="feat-icon">✓</span> Custom Precision Training Plan</li>
-                        <li><span class="feat-icon">✓</span> Data-Driven Diet & Nutrition Layout</li>
-                        <li><span class="feat-icon">✓</span> Bi-Weekly Check-in Reviews</li>
-                        <li><span class="feat-icon">✓</span> Joint Durability Biomechanics</li>
-                        <li><span class="feat-icon">✗</span> <span class="disabled-feat">Daily WhatsApp Priority Messaging</span></li>
-                        <li><span class="feat-icon">✗</span> <span class="disabled-feat">Weekly Form Video Audits</span></li>
+                        <li>
+                            <span class="feat-icon">✓</span> 
+                            <span class="lang-en">Custom Precision Training Plan</span>
+                            <span class="lang-ar">خطة تدريبية احترافية ومخصصة بالكامل</span>
+                        </li>
+                        <li>
+                            <span class="feat-icon">✓</span> 
+                            <span class="lang-en">Data-Driven Diet & Nutrition Layout</span>
+                            <span class="lang-ar">نظام غذائي دقيق مبني على السعرات</span>
+                        </li>
+                        <li>
+                            <span class="feat-icon">✓</span> 
+                            <span class="lang-en">Bi-Weekly Check-in Reviews</span>
+                            <span class="lang-ar">متابعة وتقييم نصف شهري وتحديث للأرقام</span>
+                        </li>
+                        <li>
+                            <span class="feat-icon">✓</span> 
+                            <span class="lang-en">Joint Durability Biomechanics</span>
+                            <span class="lang-ar">ميكانيكا حيوية لحماية المفاصل وزيادة متانتها</span>
+                        </li>
+                        <li>
+                            <span class="feat-icon">✗</span> 
+                            <span class="disabled-feat">
+                                <span class="lang-en">Daily WhatsApp Priority Messaging</span>
+                                <span class="lang-ar">تواصل يومي ذو أولوية على الواتساب</span>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="feat-icon">✗</span> 
+                            <span class="disabled-feat">
+                                <span class="lang-en">Weekly Form Video Audits</span>
+                                <span class="lang-ar">تقييم أسبوعي لأداء التمارين بالفيديو</span>
+                            </span>
+                        </li>
                     </ul>
                     <div class="package-footer">
-                        <button class="btn btn-outline btn-full checkout-trigger-btn" data-package="Kickstart" data-price="1500">JOIN THE SYSTEM</button>
+                        <button class="btn btn-outline btn-full checkout-trigger-btn" data-package="Kickstart" data-price="1500">
+                            <span class="lang-en">JOIN THE SYSTEM</span><span class="lang-ar">انضم إلى السيستم</span>
+                        </button>
                     </div>
                 </div>
 
                 <!-- Package 2: Velocity (Popular) -->
                 <div class="package-card popular-card" id="pkg-velocity">
-                    <div class="popular-badge">RECOMMENDED</div>
+                    <div class="popular-badge">
+                        <span class="lang-en">RECOMMENDED</span><span class="lang-ar">موصى بها</span>
+                    </div>
                     <div class="package-accent"></div>
                     <div class="package-header">
-                        <span class="package-tier highlight-text">TIER 02</span>
+                        <span class="package-tier highlight-text">
+                            <span class="lang-en">TIER 02</span><span class="lang-ar">الفئة الثانية</span>
+                        </span>
                         <h3 class="package-name">VELOCITY</h3>
                         <div class="package-price">
                             <span class="currency">EGP</span>
                             <span class="price-number">2,000</span>
-                            <span class="duration">/ 3 Months</span>
+                            <span class="duration">
+                                <span class="lang-en">/ 3 Months</span><span class="lang-ar">/ ٣ أشهر</span>
+                            </span>
                         </div>
                     </div>
                     <div class="package-vibe">
-                        <strong>The Vibe:</strong> High momentum. Weekly adjustments to their plan, close tracking, and steady communication.
+                        <span class="lang-en"><strong>The Vibe:</strong> High momentum. Weekly adjustments to their plan, close tracking, and steady communication.</span>
+                        <span class="lang-ar"><strong>المحيط العام:</strong> زخم وحركة سريعة. تعديلات وتحديثات أسبوعية دقيقة للخطط، تتبع بدني وثيق، وتواصل مستمر.</span>
                     </div>
                     <ul class="package-features">
-                        <li><span class="feat-icon text-yellow">✓</span> Custom Precision Training Plan</li>
-                        <li><span class="feat-icon text-yellow">✓</span> Data-Driven Diet & Nutrition Layout</li>
-                        <li><span class="feat-icon text-yellow">✓</span> <strong>Weekly Check-in Reviews & Tweaks</strong></li>
-                        <li><span class="feat-icon text-yellow">✓</span> Joint Durability Biomechanics</li>
-                        <li><span class="feat-icon text-yellow">✓</span> Form Correction Support</li>
-                        <li><span class="feat-icon text-yellow">✓</span> <strong>WhatsApp Support Channel</strong></li>
+                        <li>
+                            <span class="feat-icon text-yellow">✓</span> 
+                            <span class="lang-en">Custom Precision Training Plan</span>
+                            <span class="lang-ar">خطة تدريبية احترافية ومخصصة بالكامل</span>
+                        </li>
+                        <li>
+                            <span class="feat-icon text-yellow">✓</span> 
+                            <span class="lang-en">Data-Driven Diet & Nutrition Layout</span>
+                            <span class="lang-ar">نظام غذائي دقيق مبني على السعرات</span>
+                        </li>
+                        <li>
+                            <span class="feat-icon text-yellow">✓</span> 
+                            <span class="lang-en"><strong>Weekly Check-in Reviews & Tweaks</strong></span>
+                            <span class="lang-ar"><strong>متابعة وتحديث أسبوعي كامل للبرنامج</strong></span>
+                        </li>
+                        <li>
+                            <span class="feat-icon text-yellow">✓</span> 
+                            <span class="lang-en">Joint Durability Biomechanics</span>
+                            <span class="lang-ar">ميكانيكا حيوية لحماية المفاصل وزيادة متانتها</span>
+                        </li>
+                        <li>
+                            <span class="feat-icon text-yellow">✓</span> 
+                            <span class="lang-en">Form Correction Support</span>
+                            <span class="lang-ar">دعم تصحيح طريقة وأداء التمارين بالفيديو</span>
+                        </li>
+                        <li>
+                            <span class="feat-icon text-yellow">✓</span> 
+                            <span class="lang-en"><strong>WhatsApp Support Channel</strong></span>
+                            <span class="lang-ar"><strong>قناة تواصل ودعم يومي عبر الواتساب</strong></span>
+                        </li>
                     </ul>
                     <div class="package-footer">
-                        <button class="btn btn-primary btn-full btn-edge checkout-trigger-btn" data-package="Velocity" data-price="2000">JOIN VELOCITY</button>
+                        <button class="btn btn-primary btn-full btn-edge checkout-trigger-btn" data-package="Velocity" data-price="2000">
+                            <span class="lang-en">JOIN VELOCITY</span><span class="lang-ar">انضم إلى فيلوسيتي</span>
+                        </button>
                     </div>
                 </div>
 
@@ -633,27 +957,58 @@
                 <div class="package-card" id="pkg-apex">
                     <div class="package-accent"></div>
                     <div class="package-header">
-                        <span class="package-tier">TIER 03</span>
+                        <span class="package-tier">
+                            <span class="lang-en">TIER 03</span><span class="lang-ar">الفئة الثالثة</span>
+                        </span>
                         <h3 class="package-name">APEX</h3>
                         <div class="package-price">
                             <span class="currency">EGP</span>
                             <span class="price-number">2,500</span>
-                            <span class="duration">/ 3 Months</span>
+                            <span class="duration">
+                                <span class="lang-en">/ 3 Months</span><span class="lang-ar">/ ٣ أشهر</span>
+                            </span>
                         </div>
                     </div>
                     <div class="package-vibe">
-                        <strong>The Vibe:</strong> Total customization and daily/close-proximity mentorship for the absolute best results.
+                        <span class="lang-en"><strong>The Vibe:</strong> Total customization and daily/close-proximity mentorship for the absolute best results.</span>
+                        <span class="lang-ar"><strong>المحيط العام:</strong> تخصيص وتوجيه يومي كامل وتواصل عن قرب شديد للحصول على أفضل وأسرع النتائج البدنية الممكنة.</span>
                     </div>
                     <ul class="package-features">
-                        <li><span class="feat-icon">✓</span> Custom Precision Training Plan</li>
-                        <li><span class="feat-icon">✓</span> Data-Driven Diet & Nutrition Layout</li>
-                        <li><span class="feat-icon">✓</span> <strong>Daily Priority Check-ins</strong></li>
-                        <li><span class="feat-icon">✓</span> Advanced Lift-by-Lift Video Audits</li>
-                        <li><span class="feat-icon">✓</span> <strong>1-on-1 High-Frequency Mentorship</strong></li>
-                        <li><span class="feat-icon">✓</span> Lifestyle & Supplement Protocols</li>
+                        <li>
+                            <span class="feat-icon">✓</span> 
+                            <span class="lang-en">Custom Precision Training Plan</span>
+                            <span class="lang-ar">خطة تدريبية احترافية ومخصصة بالكامل</span>
+                        </li>
+                        <li>
+                            <span class="feat-icon">✓</span> 
+                            <span class="lang-en">Data-Driven Diet & Nutrition Layout</span>
+                            <span class="lang-ar">نظام غذائي دقيق مبني على السعرات</span>
+                        </li>
+                        <li>
+                            <span class="feat-icon">✓</span> 
+                            <span class="lang-en"><strong>Daily Priority Check-ins</strong></span>
+                            <span class="lang-ar"><strong>متابعة يومية مستمرة وذات أولوية قصوى</strong></span>
+                        </li>
+                        <li>
+                            <span class="feat-icon">✓</span> 
+                            <span class="lang-en">Advanced Lift-by-Lift Video Audits</span>
+                            <span class="lang-ar">تقييم تفصيلي بالفيديو لكل تمرين حركة بحركة</span>
+                        </li>
+                        <li>
+                            <span class="feat-icon">✓</span> 
+                            <span class="lang-en"><strong>1-on-1 High-Frequency Mentorship</strong></span>
+                            <span class="lang-ar"><strong>تدريب وتوجيه فردي كامل ومكثف (فرد لفرد)</strong></span>
+                        </li>
+                        <li>
+                            <span class="feat-icon">✓</span> 
+                            <span class="lang-en">Lifestyle & Supplement Protocols</span>
+                            <span class="lang-ar">بروتوكولات ونظم للمكملات الغذائية وأسلوب الحياة</span>
+                        </li>
                     </ul>
                     <div class="package-footer">
-                        <button class="btn btn-outline btn-full checkout-trigger-btn" data-package="Apex" data-price="2500">JOIN APEX ELITE</button>
+                        <button class="btn btn-outline btn-full checkout-trigger-btn" data-package="Apex" data-price="2500">
+                            <span class="lang-en">JOIN APEX ELITE</span><span class="lang-ar">انضم إلى أبيكس إيليت</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -663,8 +1018,13 @@
     <!-- Sticky Bottom CTA Section -->
     <div class="sticky-footer-cta">
         <div class="container sticky-container">
-            <span class="sticky-text">Ready to Own Your System? Tier 2: Velocity is waiting.</span>
-            <a href="#packages" class="btn btn-primary btn-sm btn-edge">GET STARTED</a>
+            <span class="sticky-text">
+                <span class="lang-en">Ready to Own Your System? Tier 2: Velocity is waiting.</span>
+                <span class="lang-ar">مستعد لتمتلك نظامك المخصص؟ الفئة الثانية: فيلوسيتي بانتظارك.</span>
+            </span>
+            <a href="#packages" class="btn btn-primary btn-sm btn-edge">
+                <span class="lang-en">GET STARTED</span><span class="lang-ar">ابدأ الآن</span>
+            </a>
         </div>
     </div>
 
@@ -674,62 +1034,97 @@
             <button class="modal-close-btn" id="close-modal-btn" aria-label="Close modal">&times;</button>
             
             <div class="modal-indicator-bar">
-                <div class="step-indicator active" id="step-ind-1">1. PROFILE</div>
-                <div class="step-indicator" id="step-ind-2">2. INSTAPAY</div>
-                <div class="step-indicator" id="step-ind-3">3. CONFIRM</div>
+                <div class="step-indicator active" id="step-ind-1">
+                    <span class="lang-en">1. PROFILE</span><span class="lang-ar">1. البيانات</span>
+                </div>
+                <div class="step-indicator" id="step-ind-2">
+                    <span class="lang-en">2. INSTAPAY</span><span class="lang-ar">2. إنستاباي</span>
+                </div>
+                <div class="step-indicator" id="step-ind-3">
+                    <span class="lang-en">3. CONFIRM</span><span class="lang-ar">3. التأكيد</span>
+                </div>
             </div>
 
             <div class="modal-scroll-container">
                 <!-- STEP 1: Details -->
                 <div class="modal-step active" id="modal-step-1">
-                    <h3 class="modal-title">SECURE YOUR ELITE SLOT</h3>
-                    <p class="modal-subtitle">Tell us about yourself. Coach Omar will contact you within 24 hours.</p>
+                    <h3 class="modal-title">
+                        <span class="lang-en">SECURE YOUR ELITE SLOT</span>
+                        <span class="lang-ar">احجز مكانك المميز الآن</span>
+                    </h3>
+                    <p class="modal-subtitle">
+                        <span class="lang-en">Tell us about yourself. Coach Omar will contact you within 24 hours.</span>
+                        <span class="lang-ar">أدخل بياناتك وسيقوم الكابتن عمر بالتواصل معك خلال 24 ساعة فقط.</span>
+                    </p>
                     
                     <div class="selected-package-badge">
-                        Selected: <strong class="badge-pkg-name highlight-text" id="selected-package-name">Velocity</strong> 
-                        &bull; <strong id="selected-package-price">2,000 EGP</strong> (3 Months)
+                        <span class="lang-en">Selected: <strong class="badge-pkg-name highlight-text" id="selected-package-name">Velocity</strong> &bull; <strong id="selected-package-price">2,000 EGP</strong> (3 Months)</span>
+                        <span class="lang-ar">الباقة المختارة: <strong class="badge-pkg-name highlight-text" id="selected-package-name-ar">Velocity</strong> &bull; <strong id="selected-package-price-ar">2,000 EGP</strong> (٣ أشهر)</span>
                     </div>
 
                     <div class="form-group">
-                        <label for="client-name" class="input-label">Your Full Name (الاسم بالكامل)</label>
+                        <label for="client-name" class="input-label">
+                            <span class="lang-en">Your Full Name</span><span class="lang-ar">الاسم بالكامل</span>
+                        </label>
                         <input type="text" id="client-name" class="form-control" placeholder="e.g. Adham Mohamed" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="client-phone" class="input-label">WhatsApp Phone Number (رقم الواتساب)</label>
-                        <input type="tel" id="client-phone" class="form-control" placeholder="e.g. +20 123 456 7890" required>
+                        <label for="client-phone" class="input-label">
+                            <span class="lang-en">WhatsApp Phone Number</span><span class="lang-ar">رقم الواتساب</span>
+                        </label>
+                        <input type="tel" id="client-phone" class="form-control" placeholder="e.g. +20 112 980 8526" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="client-notes" class="input-label">Physical Goal / Target (اختياري)</label>
+                        <label for="client-notes" class="input-label">
+                            <span class="lang-en">Physical Goal / Target (Optional)</span><span class="lang-ar">الهدف البدني أو الإصابات السابقة (اختياري)</span>
+                        </label>
                         <textarea id="client-notes" class="form-control text-area-control" rows="2" placeholder="e.g. Lose fat, recover from knee injury, etc."></textarea>
                     </div>
 
-                    <button class="btn btn-primary btn-full btn-edge mt-2" id="next-step-1-btn">PROCEED TO PAYMENT DETAILS</button>
+                    <button class="btn btn-primary btn-full btn-edge mt-2" id="next-step-1-btn">
+                        <span class="lang-en">PROCEED TO PAYMENT DETAILS</span>
+                        <span class="lang-ar">الانتقال لتفاصيل الدفع</span>
+                    </button>
                 </div>
 
                 <!-- STEP 2: Instapay Instruction -->
                 <div class="modal-step" id="modal-step-2">
-                    <h3 class="modal-title">MAKE TRANSFER VIA INSTAPAY</h3>
-                    <p class="modal-subtitle">Egypt's secure mobile instant transfer network.</p>
+                    <h3 class="modal-title">
+                        <span class="lang-en">TRANSFER VIA INSTAPAY</span>
+                        <span class="lang-ar">التحويل عبر تطبيق إنستاباي</span>
+                    </h3>
+                    <p class="modal-subtitle">
+                        <span class="lang-en">Egypt's secure mobile instant transfer network.</span>
+                        <span class="lang-ar">الشبكة الوطنية المصرية المؤمنة للتحويل اللحظي.</span>
+                    </p>
 
                     <div class="instapay-billing-box">
                         <div class="bill-row">
-                            <span class="bill-label">Coach Name</span>
+                            <span class="bill-label">
+                                <span class="lang-en">Coach Name</span><span class="lang-ar">اسم المستلم</span>
+                            </span>
                             <span class="bill-val">Omar Desouky</span>
                         </div>
                         <div class="bill-row">
-                            <span class="bill-label">Package Tier</span>
+                            <span class="bill-label">
+                                <span class="lang-en">Package Tier</span><span class="lang-ar">فئة الباقة</span>
+                            </span>
                             <span class="bill-val" id="billing-package-name">Velocity</span>
                         </div>
                         <div class="bill-row total-row">
-                            <span class="bill-label highlight-text">Transfer Amount</span>
+                            <span class="bill-label highlight-text">
+                                <span class="lang-en">Transfer Amount</span><span class="lang-ar">مبلغ التحويل المطلوب</span>
+                            </span>
                             <span class="bill-val highlight-text" id="billing-package-price">2,000 EGP</span>
                         </div>
                     </div>
 
                     <div class="instapay-info-card">
-                        <span class="card-label">INSTAPAY ADDRESS (عنوان إنستاباي)</span>
+                        <span class="card-label">
+                            <span class="lang-en">INSTAPAY ADDRESS</span><span class="lang-ar">عنوان الدفع الخاص بإنستاباي</span>
+                        </span>
                         <div class="clipboard-box">
                             <span class="clipboard-content" id="instapay-address">omardesoke@instapay</span>
                             <button class="copy-btn" id="copy-address-btn">
@@ -742,19 +1137,32 @@
                         </div>
                     </div>
 
-                    <div class="instapay-instructions-list" dir="rtl">
-                        <ol>
-                            <li>افتح تطبيق <strong>Instapay</strong> على هاتفك المحمول.</li>
-                            <li>اختر <strong>إرسال نقود (Send Money)</strong>.</li>
-                            <li>اختر <strong>عنوان الدفع (IPN Address)</strong>.</li>
-                            <li>أدخل العنوان المنسوخ: <strong class="highlight-inline">omardesoke@instapay</strong></li>
-                            <li>أدخل المبلغ المطلوب وتأكد من نجاح العملية وخذ <strong>لقطة شاشة (Screenshot)</strong> للإيصال.</li>
+                    <div class="instapay-instructions-list">
+                        <!-- Instructions in English -->
+                        <ol class="lang-en">
+                            <li>Open the <strong>Instapay App</strong> on your mobile device.</li>
+                            <li>Select <strong>Send Money</strong> option.</li>
+                            <li>Select <strong>IPN Address</strong> input type.</li>
+                            <li>Enter the copied handle: <strong class="highlight-inline">omardesoke@instapay</strong></li>
+                            <li>Input the exact total package amount, complete the transfer, and take a **Screenshot** of the receipt.</li>
+                        </ol>
+                        <!-- Instructions in Arabic -->
+                        <ol class="lang-ar" dir="rtl">
+                            <li>افتح تطبيق <strong>إنستاباي</strong> على هاتفك المحمول.</li>
+                            <li>اختر خيار <strong>إرسال نقود (Send Money)</strong>.</li>
+                            <li>اختر خيار <strong>عنوان الدفع (IPN Address)</strong>.</li>
+                            <li>أدخل العنوان المنسوخ أعلاه: <strong class="highlight-inline">omardesoke@instapay</strong></li>
+                            <li>أدخل مبلغ الباقة المطلوب بدقة، وأكد التحويل وخذ <strong>لقطة شاشة (Screenshot)</strong> للإيصال.</li>
                         </ol>
                     </div>
 
                     <div class="modal-buttons-row">
-                        <button class="btn btn-outline" id="prev-step-2-btn">BACK</button>
-                        <button class="btn btn-primary btn-edge" id="next-step-2-btn">I COMPLETED TRANSFER</button>
+                        <button class="btn btn-outline" id="prev-step-2-btn">
+                            <span class="lang-en">BACK</span><span class="lang-ar">رجوع</span>
+                        </button>
+                        <button class="btn btn-primary btn-edge" id="next-step-2-btn">
+                            <span class="lang-en">I COMPLETED TRANSFER</span><span class="lang-ar">أكملت عملية التحويل</span>
+                        </button>
                     </div>
                 </div>
 
@@ -765,27 +1173,38 @@
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                     </div>
-                    <h3 class="modal-title">FINAL STEP: SEND RECEIPTS</h3>
+                    <h3 class="modal-title">
+                        <span class="lang-en">FINAL STEP: SEND RECEIPTS</span>
+                        <span class="lang-ar">الخطوة الأخيرة: إرسال الإيصال</span>
+                    </h3>
                     
                     <div class="warning-callout">
-                        <p class="callout-title">⚠️ VERIFICATION REQUIRED</p>
+                        <p class="callout-title">
+                            <span class="lang-en">⚠️ VERIFICATION REQUIRED</span>
+                            <span class="lang-ar">⚠️ مطلوب تأكيد التحويل الآن</span>
+                        </p>
                         <p class="callout-desc">
-                            To activate your customized program immediately, you must send your **Instapay Receipt Screenshot** directly to Coach Omar on WhatsApp.
+                            <span class="lang-en">To activate your customized program immediately, you must send your **Instapay Receipt Screenshot** directly to Coach Omar on WhatsApp.</span>
+                            <span class="lang-ar">لتفعيل وتجهيز خطتك المخصصة فوراً، يجب عليك إرسال لقطة شاشة لإيصال التحويل عبر إنستاباي مباشرة للكابتن عمر على الواتساب.</span>
                         </p>
                     </div>
 
                     <div class="receipt-summary-box">
-                        <p>We've generated your custom system registration token. Clicking below will open WhatsApp and load your details automatically.</p>
+                        <p class="lang-en">We've generated your custom system registration token. Clicking below will open WhatsApp and load your details automatically.</p>
+                        <p class="lang-ar">لقد قمنا بتوليد رمز تسجيل مخصص لك. الضغط أدناه سيفتح تطبيق الواتساب ويرسل رسالتك وتفاصيل الباقة تلقائياً.</p>
                     </div>
 
                     <button class="btn btn-primary btn-full btn-edge" id="whatsapp-confirm-btn">
                         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" class="inline-wa-icon">
                             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.66.986 3.288 1.487 5.357 1.488 5.395 0 9.782-4.387 9.785-9.783a9.685 9.685 0 0 0-2.845-6.912A9.689 9.689 0 0 0 12.01 1.91c-5.399 0-9.786 4.387-9.79 9.788-.002 2.062.502 3.693 1.493 5.35L2.735 21.05l4.032-1.057v.161zM17.47 14.39c-.3-.149-1.772-.874-2.046-.973-.274-.1-.473-.149-.673.15-.2.299-.772.972-.947 1.172-.175.199-.349.224-.648.075-.3-.15-1.266-.466-2.41-1.486-.89-.794-1.49-1.775-1.665-2.074-.175-.3-.019-.461.13-.61.135-.133.3-.349.45-.523.149-.174.199-.299.299-.498.1-.2.05-.374-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.582-.487-.503-.673-.513l-.57-.01c-.198 0-.523.074-.797.373-.273.299-1.045 1.02-1.045 2.487 0 1.467 1.07 2.885 1.22 3.085.149.2 2.106 3.216 5.1 4.507.712.308 1.27.49 1.704.629.714.227 1.365.195 1.88.118.572-.085 1.772-.722 2.02-1.42.25-.697.25-1.293.175-1.42-.075-.124-.274-.198-.573-.348z"/>
                         </svg>
-                        OPEN WHATSAPP & SEND RECEIPT
+                        <span class="lang-en">OPEN WHATSAPP & SEND RECEIPT</span>
+                        <span class="lang-ar">فتح الواتساب وإرسال الإيصال</span>
                     </button>
                     
-                    <button class="btn btn-outline btn-full mt-2" id="back-to-packages-btn">CLOSE</button>
+                    <button class="btn btn-outline btn-full mt-2" id="back-to-packages-btn">
+                        <span class="lang-en">CLOSE</span><span class="lang-ar">إغلاق</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -806,27 +1225,40 @@
                     </svg>
                     <span class="footer-logo-text">OMAR DESOUKY</span>
                 </div>
-                <p class="footer-tagline">OWN YOUR SYSTEM &bull; ELITE BIOMECHANICS & PERSONAL COACHING</p>
+                <p class="footer-tagline">
+                    <span class="lang-en">OWN YOUR SYSTEM &bull; ELITE BIOMECHANICS & PERSONAL COACHING</span>
+                    <span class="lang-ar">امتلك نظامك الخاص &bull; ميكانيكا حيوية علمية وتدريب بدني احترافي</span>
+                </p>
             </div>
             
             <div class="footer-links-grid">
                 <div class="footer-col">
-                    <h4 class="footer-title">THE SYSTEM</h4>
-                    <a href="#philosophy">The 4 Pillars</a>
-                    <a href="#guidelines">General Guidelines</a>
-                    <a href="#mastermind">Before / After</a>
-                    <a href="#toolkit">Macro Calculator</a>
+                    <h4 class="footer-title">
+                        <span class="lang-en">THE SYSTEM</span><span class="lang-ar">السيستم البدني</span>
+                    </h4>
+                    <a href="#philosophy">
+                        <span class="lang-en">The 4 Pillars</span><span class="lang-ar">الركائز الأربعة</span>
+                    </a>
+                    <a href="#guidelines">
+                        <span class="lang-en">General Guidelines</span><span class="lang-ar">التوجيهات العامة</span>
+                    </a>
+                    <a href="#mastermind">
+                        <span class="lang-en">Before / After</span><span class="lang-ar">صور التحول</span>
+                    </a>
+                    <a href="#toolkit">
+                        <span class="lang-en">Macro Calculator</span><span class="lang-ar">حاسبة الماكروز</span>
+                    </a>
                 </div>
                 
                 <div class="footer-col">
-                    <h4 class="footer-title">COACH CHANNELS</h4>
+                    <h4 class="footer-title">
+                        <span class="lang-en">COACH CHANNELS</span><span class="lang-ar">حسابات التواصل</span>
+                    </h4>
                     <div class="social-links-row">
                         <a href="https://instagram.com" target="_blank" class="social-link-icon" aria-label="Instagram">
-                            <!-- Instagram SVG -->
                             <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                         </a>
                         <a href="https://tiktok.com" target="_blank" class="social-link-icon" aria-label="TikTok">
-                            <!-- TikTok Custom SVG -->
                             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.63 4.18 1.1 1.2 2.61 1.94 4.21 2.11v3.98c-1.89-.04-3.75-.68-5.26-1.85-.04 2.87.03 5.74-.04 8.62-.12 2.23-.97 4.41-2.58 5.99-1.92 1.93-4.73 2.92-7.44 2.58-2.61-.31-5.06-2.02-6.19-4.48-1.5-3.15-1.02-7.22 1.25-9.87 1.83-2.19 4.77-3.23 7.55-2.65v4.06c-1.39-.37-2.92.05-3.92 1.09-.94.97-1.22 2.45-.73 3.73.43 1.18 1.57 1.98 2.82 2.01 1.63.07 3.12-1.09 3.39-2.71.1-1 .06-2 .07-3.01-.01-4.22-.01-8.44-.01-12.66z"/></svg>
                         </a>
                     </div>
