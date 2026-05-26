@@ -815,6 +815,7 @@ h1, h2, h3, h4, h5, h6 {
     user-select: none;
     box-shadow: var(--glass-glow);
     clip-path: polygon(0 0, 93% 0, 100% 6%, 100% 100%, 7% 100%, 0 94%);
+    container-type: inline-size;
 }
 
 .slider-img {
@@ -829,6 +830,14 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     aspect-ratio: auto;
+}
+
+.slider-img-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    display: block;
 }
 
 .img-before .image-placeholder {
@@ -870,7 +879,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .img-after .image-placeholder {
     /* Keep placeholder width anchored to slider container size to avoid squishing */
-    width: 470px; /* Base container width approx */
+    width: 470px;
+    width: 100cqw;
+    max-width: none;
+}
+
+.img-after .slider-img-element {
+    /* Keep image width anchored to slider container size to avoid squishing */
+    width: 470px;
+    width: 100cqw;
+    max-width: none;
 }
 
 /* Handle line */
@@ -2181,23 +2199,20 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* --- Image Placeholder Override fallbacks ---
-   If you drop 'omar_hero.png', 'omar_before.png', or 'omar_after.png' into the project folder, 
-   these CSS overrides will immediately load and display them over the placeholders automatically! */
-.omar-hero-placeholder {
-    background-image: url('omar_hero.png');
-    background-size: cover;
-    background-position: center;
+/* --- Image Integration Styles ---
+   We now use high-performance img tags loaded directly in the HTML.
+   These declarations disable the background image fallbacks to avoid double-loading. */
+.omar-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
-.omar-before-placeholder {
-    background-image: url('omar_before.png');
-    background-size: cover;
-    background-position: center;
-}
+
+.omar-hero-placeholder,
+.omar-before-placeholder,
 .omar-after-placeholder {
-    background-image: url('omar_after.png');
-    background-size: cover;
-    background-position: center;
+    background-image: none !important;
 }
 
 /* ==========================================================================
@@ -2348,5 +2363,37 @@ html.lang-ar .results-lockup {
     html.lang-ar .hero-content {
         align-items: center;
     }
+}
+
+/* --- 5. Additional Visual and Bilingual Refinements --- */
+
+/* Arabic Text Alignment Broad Overrides */
+html.lang-ar h1,
+html.lang-ar h2,
+html.lang-ar h3,
+html.lang-ar h4,
+html.lang-ar p,
+html.lang-ar li,
+html.lang-ar .input-label {
+    text-align: right;
+}
+
+html.lang-ar .text-center,
+html.lang-ar .text-center * {
+    text-align: center;
+}
+
+/* Correct language pill alignment in Arabic header */
+html.lang-ar .lang-switcher-pill {
+    margin-right: 1rem;
+    margin-left: 0;
+}
+
+/* Switcher Button Hover Contrast Fixes */
+.lang-btn-switcher:hover {
+    color: var(--color-white) !important;
+}
+.lang-btn-switcher.active:hover {
+    color: var(--bg-base) !important;
 }
 
