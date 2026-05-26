@@ -2397,3 +2397,63 @@ html.lang-ar .lang-switcher-pill {
     color: var(--bg-base) !important;
 }
 
+/* --- 6. Compact Packaging & Availability Styles --- */
+
+.tier-availability-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.62rem;
+    font-weight: 900;
+    padding: 3px 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border-white);
+    color: var(--color-grey-muted);
+    clip-path: polygon(0 0, 92% 0, 100% 30%, 100% 100%, 8% 100%, 0 70%);
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+.tier-availability-badge.limited {
+    background-color: rgba(255, 230, 0, 0.08);
+    border-color: rgba(255, 230, 0, 0.4);
+    color: var(--color-primary);
+}
+
+.package-features li {
+    font-size: 0.84rem;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.feature-meta-desc {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--color-grey-muted);
+    margin-top: 3px;
+    line-height: 1.3;
+}
+
+.wearable-booster-badge {
+    display: inline-block;
+    font-size: 0.58rem;
+    font-weight: 900;
+    padding: 1px 5px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin-left: 6px;
+    color: var(--color-primary);
+    clip-path: polygon(0 0, 92% 0, 100% 25%, 100% 100%, 8% 100%, 0 75%);
+    vertical-align: middle;
+}
+
+html.lang-ar .wearable-booster-badge {
+    margin-left: 0;
+    margin-right: 6px;
+}
+
