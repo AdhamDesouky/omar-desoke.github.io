@@ -513,7 +513,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 أرسل هذه الرسالة لتأكيد وحجز مكاني بالسيستم! مرفق لقطة الشاشة لإيصال التحويل:`;
         } else {
-            waText = `Hello Coach Omar Desouky,
+            waText = `Hello Coach Omar Desoke,
 My name is *${clientName}*. I am ready to Own Your System!
 
 I have selected the *Tier ${currentSelectedPackage.name === 'Kickstart' ? '01' : currentSelectedPackage.name === 'Velocity' ? '02' : '03'}: ${currentSelectedPackage.name}* Package (3 Months) for *${parseFloat(currentSelectedPackage.price).toLocaleString()} EGP*.
