@@ -2182,20 +2182,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* --- Image Placeholder Override fallbacks ---
-   If you drop 'omar_hero.jpg', 'omar_before.jpg', or 'omar_after.jpg' into the project folder, 
+   If you drop 'omar_hero.png', 'omar_before.png', or 'omar_after.png' into the project folder, 
    these CSS overrides will immediately load and display them over the placeholders automatically! */
 .omar-hero-placeholder {
-    background-image: url('omar_hero.jpg');
+    background-image: url('omar_hero.png');
     background-size: cover;
     background-position: center;
 }
 .omar-before-placeholder {
-    background-image: url('omar_before.jpg');
+    background-image: url('omar_before.png');
     background-size: cover;
     background-position: center;
 }
 .omar-after-placeholder {
-    background-image: url('omar_after.jpg');
+    background-image: url('omar_after.png');
     background-size: cover;
     background-position: center;
 }
