@@ -14,7 +14,7 @@ export default defineConfig({
         // Substitute the canonical URLs in OpenGraph and Schema data
         const siteUrl = isGithub 
           ? 'https://adhamdesouky.github.io/omar-desoke.github.io/' 
-          : 'https://ownyoursystem.com/';
+          : 'https://ownyoursystem.vercel.app/';
         
         return html.replace(/https:\/\/adhamdesouky\.github\.io\/omar-desoke\.github\.io\//g, siteUrl);
       }
