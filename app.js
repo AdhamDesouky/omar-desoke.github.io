@@ -420,9 +420,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Hydrate Step 2 billing texts (Dynamic bilingual display)
         const arPkgNames = {
-            'Kickstart': 'كيك ستارت (الفئة الأولى)',
-            'Velocity': 'فيلوسيتي (الفئة الثانية)',
-            'Apex': 'أبيكس (الفئة الثالثة)'
+            'Kickstart': 'كيك ستارت',
+            'Velocity': 'فيلوسيتي',
+            'Apex': 'أبيكس'
         };
         const pkgNameAr = arPkgNames[currentSelectedPackage.name] || currentSelectedPackage.name;
 
@@ -490,9 +490,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Package name in Arabic
         const arPkgNames = {
-            'Kickstart': 'كيك ستارت (الفئة الأولى)',
-            'Velocity': 'فيلوسيتي (الفئة الثانية)',
-            'Apex': 'أبيكس (الفئة الثالثة)'
+            'Kickstart': 'كيك ستارت',
+            'Velocity': 'فيلوسيتي',
+            'Apex': 'أبيكس'
         };
         const pkgNameAr = arPkgNames[currentSelectedPackage.name] || currentSelectedPackage.name;
 
