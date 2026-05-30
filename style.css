@@ -38,11 +38,17 @@
 
 html {
     scroll-behavior: smooth;
-    font-size: 16px;
+    font-size: 15px; /* Scales down layout slightly to resolve the 'zoomed in' feel at 100% zoom */
     background-color: var(--bg-base);
     color: var(--color-white);
     font-family: var(--font-heading);
     overflow-x: hidden;
+}
+
+@media (min-width: 1400px) {
+    html {
+        font-size: 16px; /* Scales back to full size on extra large screens */
+    }
 }
 
 body {
@@ -513,6 +519,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--bg-surface);
     border: 6px solid var(--color-primary);
     position: relative;
+    width: 100%;
     max-width: 440px;
     box-shadow: var(--glass-glow);
     clip-path: polygon(0 0, 93% 0, 100% 8%, 100% 100%, 7% 100%, 0 92%);
