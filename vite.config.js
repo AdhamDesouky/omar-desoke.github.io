@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  // Dynamically set base path based on compilation environment
-  base: process.env.DEPLOY_TARGET === 'github' ? '/omar-desoke.github.io/' : '/',
+  // Use relative paths to make the build completely environment-agnostic (works on GitHub Pages, Vercel, and custom domains out of the box!)
+  base: './',
   build: {
     outDir: 'dist'
   },
@@ -11,10 +11,10 @@ export default defineConfig({
       name: 'html-transform',
       transformIndexHtml(html) {
         const isGithub = process.env.DEPLOY_TARGET === 'github';
-        // For Vercel deployments, substitute the canonical URLs in OpenGraph and Schema data
+        // Substitute the canonical URLs in OpenGraph and Schema data
         const siteUrl = isGithub 
           ? 'https://adhamdesouky.github.io/omar-desoke.github.io/' 
-          : 'https://omardesoke.vercel.app/';
+          : 'https://ownyoursystem.vercel.app/';
         
         return html.replace(/https:\/\/adhamdesouky\.github\.io\/omar-desoke\.github\.io\//g, siteUrl);
       }
