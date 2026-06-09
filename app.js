@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 2. Dynamic Bilingual Language Switching Logic ---
     let currentLang = localStorage.getItem('omar_pt_lang') || 'en';
+    let updateRoutineOptimizerLanguage = null;
 
     const setLanguage = (lang) => {
         currentLang = lang;
@@ -79,6 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 btnEn.classList.remove('active');
             }
         });
+
+        // Trigger dynamic routine redraw if registered
+        if (typeof updateRoutineOptimizerLanguage === 'function') {
+            updateRoutineOptimizerLanguage();
+        }
     };
 
     // Attach click listeners to switcher buttons
@@ -136,9 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('touchmove', (e) => {
             if (!isDragging) return;
             if (e.touches[0]) {
+                if (e.cancelable) e.preventDefault(); // Lock vertical scrolling while dragging the slider
                 moveSlider(e.touches[0].clientX);
             }
-        }, { passive: true });
+        }, { passive: false });
         
         // Initial setup sweep to 50%
         afterImgWrap.style.width = '50%';
@@ -146,48 +153,276 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // --- 4. Operational Guidelines Panel Selector & Water Estimator ---
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabPanels = document.querySelectorAll('.tab-panel');
-    
-    tabButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const targetTab = btn.getAttribute('data-tab');
-            
-            // Toggle active states on tab buttons
-            tabButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            // Toggle active states on panels
-            tabPanels.forEach(panel => {
-                panel.classList.remove('active');
-                if (panel.getAttribute('id') === `panel-${targetTab}`) {
-                    panel.classList.add('active');
+    // --- 4. Interactive Routine Optimizer Logic ---
+    const lifestyleBtns = document.querySelectorAll('#lifestyle-options .opt-btn');
+    const bottleneckBtns = document.querySelectorAll('#bottleneck-options .opt-btn');
+    const timelineContainer = document.getElementById('routine-timeline-container');
+    const coachTipText = document.getElementById('coach-tip-text');
+
+    if (lifestyleBtns.length && bottleneckBtns.length && timelineContainer && coachTipText) {
+        const routineData = {
+            office: {
+                energy: {
+                    timeline: [
+                        { time: "7:30 AM", title: { en: "Delay Caffeine & Hydrate", ar: "أخر القهوة واشرب مياه" }, desc: { en: "Drink 500ml water with a pinch of salt. Delay coffee by 90 minutes to prevent the afternoon crash.", ar: "اشرب كوبايتين مياه بملح خفيف، وأخر أول فنجان قهوة 90 دقيقة عشان تتفادى خمول نص اليوم." } },
+                        { time: "1:30 PM", title: { en: "Post-Lunch Walk", ar: "مشي خفيف بعد الغدا" }, desc: { en: "A 10-minute walk post-lunch activates insulin sensitivity and keeps fatigue at bay.", ar: "مشي 10 دقائق بعد الغدا بيظبط سكر الدم ويمنع وخامة بعد الأكل." } },
+                        { time: "6:00 PM", title: { en: "System Workout", ar: "تمرين السيستم" }, desc: { en: "High-intensity biomechanical session utilizing stored energy from lunch.", ar: "تمرين مكثف مستهدف للعضلات صح مستغلين طاقة وجبة الغدا." } },
+                        { time: "10:00 PM", title: { en: "Screen Block", ar: "فصل الشاشات" }, desc: { en: "Turn off screens to lower cortisol and trigger natural melatonin production.", ar: "اقفل الموبايل عشان تقلل الكورتيزول وجسمك يفرز هرمون النوم طبيعي." } }
+                    ],
+                    tip: {
+                        en: "By delaying your morning caffeine and getting a short post-lunch walk, you will completely bypass the typical 2 PM office brain-fog. The System schedules your workouts post-work to capitalize on energy stores.",
+                        ar: "بتأجيل قهوة الصبح والمشي الخفيف بعد الغدا، هتتخلص تماماً من خمول الضهر. السيستم بينظم تمرينك بعد الشغل عشان نستغل الأكل اللي أكلته طول اليوم في التمرين."
+                    }
+                },
+                diet: {
+                    timeline: [
+                        { time: "8:00 AM", title: { en: "High Protein Breakfast", ar: "فطار بروتين عالي" }, desc: { en: "Eggs, veggies, and healthy fats. No simple carbs to prevent insulin spikes.", ar: "فطار غني بالبروتين والدهون الصحية وبدون كربوهيدرات بسيطة عشان سكر الدم يفضل مستقر." } },
+                        { time: "2:00 PM", title: { en: "Balanced Lunch", ar: "غدا متوازن" }, desc: { en: "Clean protein, complex carbs, and fiber to maintain focus at work.", ar: "بروتين صافي مع كارب معقد وألياف عشان يمدك بالطاقة طول ساعات الشغل." } },
+                        { time: "7:00 PM", title: { en: "System Workout", ar: "تمرين السيستم" }, desc: { en: "Strength training before your largest meal of the day.", ar: "تمرينك في الجيم قبل الوجبة الأساسية الأكبر في يومك." } },
+                        { time: "8:30 PM", title: { en: "Massive Recovery Dinner", ar: "عشاء ضخم للاستشفاء" }, desc: { en: "High carbs, high protein. Your muscles absorb it like a sponge post-workout.", ar: "وجبة كبيرة فيها كارب عالي وبروتين عالي. عضلاتك هتمتصها زي السفنجة بعد التمرين." } }
+                    ],
+                    tip: {
+                        en: "Late-night hunger is driven by erratic daytime blood sugar. We structure your main carbohydrates post-workout in the evening. This satisfies your appetite and promotes deep sleep.",
+                        ar: "جوع بالليل سببه الأساسي عدم استقرار سكر الدم طول اليوم. السيستم بتاعنا بيخلي الوجبة الأكبر والكارب الأعلى بعد التمرين بالليل، ده بيشبعك تماماً وبيساعدك تنام نوم عميق."
+                    }
+                },
+                time: {
+                    timeline: [
+                        { time: "8:00 AM", title: { en: "Active Commute", ar: "حركة سريعة" }, desc: { en: "Park further away or take the stairs to get 2,000 steps done early.", ar: "اركن بعيد شوية أو اطلع السلم عشان تخلص أول 2000 خطوة من بدري." } },
+                        { time: "1:00 PM", title: { en: "10-Min Step Accumulation", ar: "مشي سريع 10 دقائق" }, desc: { en: "Walk around the office or park to accumulate steps independently.", ar: "مشي خفيف في مكتبك أو حولين المبنى لزيادة عدد خطواتك اليومية." } },
+                        { time: "6:30 PM", title: { en: "Focused 45-Min System Workout", ar: "تمرين مركز 45 دقيقة" }, desc: { en: "Optimized supersets and minimal rest periods for maximal stimulation.", ar: "تمرين مركز بأسلوب السوبرسيتس (Supersets) لتقليل وقت الراحة واستغلال كل دقيقة." } },
+                        { time: "9:00 PM", title: { en: "Fast Meal Prep Protocol", ar: "وجبة استشفاء سريعة" }, desc: { en: "Quick, pre-planned high protein meal to support recovery.", ar: "وجبة بروتين عالية سريعة التحضير وتكون متجهزة مسبقاً." } }
+                    ],
+                    tip: {
+                        en: "You don't need 2 hours in the gym. The System uses optimized compound movements and supersets to squeeze a massive hypertrophy stimulus into a 45-minute window that fits your schedule.",
+                        ar: "مش محتاج تقعد ساعتين في الجيم. السيستم بيعتمد على تمارين مركبة وتكنيكات متقدمة بتديك أقصى استثارة عضلية في 45 دقيقة بس تناسب يومك المزدحم."
+                    }
+                },
+                sleep: {
+                    timeline: [
+                        { time: "8:30 AM", title: { en: "Morning Sun Exposure", ar: "تعرض للشمس صباحاً" }, desc: { en: "Get 10 minutes of direct sunlight to set your circadian rhythm.", ar: "اتعرض لضوء الشمس المباشر 10 دقائق عشان تظبط ساعتك البيولوجية." } },
+                        { time: "2:00 PM", title: { en: "Caffeine Cutoff", ar: "منع الكافيين" }, desc: { en: "Strict cutoff for all coffee/tea. Caffeine stays in your blood for 8 hours.", ar: "ممنوع كافيين نهائي بعد الساعة 2 عشان الكافيين بيفضل في الدم 8 ساعات وبيأثر على جودة نومك." } },
+                        { time: "6:00 PM", title: { en: "System Workout", ar: "تمرين السيستم" }, desc: { en: "Physical fatigue helps drive sleep pressure.", ar: "مجهود التمرين بيساعد جسمك يدخل في النوم أسرع وبعمق أكبر." } },
+                        { time: "9:30 PM", title: { en: "Magnesium & Wind Down", ar: "مغنسيوم وفصل أجهزة" }, desc: { en: "Take your sleep supplements and turn off bright lights.", ar: "خد مكملات المغنسيوم واقفل الإضاءات العالية والشاشات." } }
+                    ],
+                    tip: {
+                        en: "Sleep is a biological process that starts in the morning. Setting your light-dark cycle early and respecting the 2 PM caffeine cutoff is key to high-efficiency deep sleep.",
+                        ar: "الاستشفاء والنوم العميق بيبدأ من الصبح. التعرض للشمس بدري وقطع الكافيين الساعة 2 الضهر هي الأساس عشان جسمك يدخل في مرحلة الاستشفاء والبناء العضلي صح."
+                    }
                 }
-            });
-        });
-    });
-    
-    // Live Guidelines Water Target Calculator
-    const waterInput = document.getElementById('water-weight-input');
-    const waterResult = document.getElementById('water-result-val');
-    
-    if (waterInput && waterResult) {
-        const calcWater = () => {
-            const weight = parseFloat(waterInput.value) || 0;
-            // standard athletic hydration model: 40ml water per kg bodyweight
-            const recommendedWater = (weight * 0.04).toFixed(1);
-            
-            // Clamp logically
-            if (weight > 30) {
-                waterResult.textContent = recommendedWater;
-            } else {
-                waterResult.textContent = '3.0';
+            },
+            shift: {
+                energy: {
+                    timeline: [
+                        { time: "Wakeup", title: { en: "Electrolyte Hydration", ar: "ترطيب بالأملاح" }, desc: { en: "500ml water + salt. Skip early heavy meals to keep digestion light.", ar: "اشرب مياه بملح أول ما تصحى، وأخر الوجبات الثقيلة عشان تحافظ على نشاطك ومتركزش الدم في معدتك." } },
+                        { time: "Mid-Shift", title: { en: "Strategic Fasting & Water", ar: "صيام مؤقت ومياه" }, desc: { en: "Avoid heavy carb snacks that cause sleepiness. Keep hydration high.", ar: "تجنب السناكس اللي فيها سكريات عالية عشان متعملش هبوط مفاجئ. اشرب مياه بس." } },
+                        { time: "Shift End", title: { en: "System Workout", ar: "تمرين السيستم" }, desc: { en: "Train right after or before shift starts to maintain routine consistency.", ar: "اتمرن مباشرة بعد الشغل أو قبل ما يبدأ عشان تحافظ على استمرارية روتينك." } },
+                        { time: "Sleep-Prep", title: { en: "Blackout Environment", ar: "تجهيز غرفة مظلمة" }, desc: { en: "Use blackout curtains and sleep mask. Essential for daytime sleep.", ar: "استخدم ستاير بلاك أوت وقناع عين. ضروري جداً لو بتنام بالنهار عشان هرمونات النمو." } }
+                    ],
+                    tip: {
+                        en: "Shift work disrupts circadian biology. The System keeps your eating windows structured and hydration high to maintain rock-solid energy regardless of your clock hours.",
+                        ar: "شغل الشفتات بيلخبط الساعة البيولوجية. السيستم بيظبطلك مواعيد أكل خفيفة ومستمرة ومياه عالية عشان تحافظ على طاقتك ونشاطك مهما اختلف وقت شفتك."
+                    }
+                },
+                diet: {
+                    timeline: [
+                        { time: "Mid-Shift", title: { en: "High Protein Pack", ar: "وجبة بروتين مجهزة" }, desc: { en: "Pre-prepared chicken/meat with high fiber. Avoid fast food deliveries.", ar: "وجبة بروتين عالية (فراخ/لحمة) مجهزة من البيت، عشان تتجنب طلب الدليفري والأكل السريع." } },
+                        { time: "Shift End", title: { en: "System Workout", ar: "تمرين السيستم" }, desc: { en: "Use training to shift your hunger hormones into recovery signals.", ar: "استغل التمرين عشان تحول إشارات الجوع لإشارات بناء واستشفاء عضلي." } },
+                        { time: "Pre-Sleep", title: { en: "Volumetric Meal", ar: "وجبة مشبعة وخفيفة" }, desc: { en: "Large volume meal of clean protein and veggies to sleep full.", ar: "وجبة حجمها كبير بس سعراتها محسوبة (بروتين وخضار) عشان تنام شبعان ومستقر." } }
+                    ],
+                    tip: {
+                        en: "Fast food calls are the enemy of night shifts. Having pre-prepped high protein meals ready eliminates decision fatigue and keeps you locked in on your fat loss targets.",
+                        ar: "طلب الدليفري بالليل هو العدو الأول لشغل الشفتات. تجهيز وجباتك مسبقاً بيمنع لخبطة الأكل وبيخليك ملتزم بنسبة 100% بنظام حرق الدهون."
+                    }
+                },
+                time: {
+                    timeline: [
+                        { time: "Pre-Shift", title: { en: "Express 30-Min Gym Session", ar: "تمرين سريع 30 دقيقة" }, desc: { en: "High-density workout focussing on vertical and horizontal load.", ar: "تمرين مكثف وسريع بيركز على الحركات الأساسية لزيادة كفاءة الوقت." } },
+                        { time: "During Shift", title: { en: "Hourly Movement Trigger", ar: "حركة كل ساعة" }, desc: { en: "Stand up or walk for 2 minutes every hour. Boosts steps easily.", ar: "اتحرك دقيقتين كل ساعة عشان تضمن إن خطواتك وحرقك اليومي عالي." } },
+                        { time: "Post-Shift", title: { en: "Structured Recovery Nutrition", ar: "تغذية استشفاء منظمة" }, desc: { en: "High protein shake or quick meal. No time wasted on cooking.", ar: "بروتين شيك أو وجبة سريعة جداً ومجهزة، عشان تنام مباشرة ومضيعش وقت نومك." } }
+                    ],
+                    tip: {
+                        en: "Consistency beats duration. A highly optimized 30-to-45 minute System protocol done consistently is infinitely better than skipping workouts due to shift fatigue.",
+                        ar: "الاستمرارية أهم من وقت التمرين. تمرين مركز 30 لـ 40 دقيقة بانتظام أحسن بكتير من إنك تضيع أيام تمرينك بسبب تعب وضيق الوقت."
+                    }
+                },
+                sleep: {
+                    timeline: [
+                        { time: "Pre-Sleep", title: { en: "Circadian Light Shielding", ar: "حجب الضوء قبل النوم" }, desc: { en: "Wear blue-blocking glasses during your drive home in daylight.", ar: "البس نضارة شمسية غامقة وإنت مروح في الشمس الصبح عشان تهيأ جسمك للنوم." } },
+                        { time: "Home", title: { en: "Cool Down Shower", ar: "دش فاتر" }, desc: { en: "Lower body core temperature to signal sleep readiness.", ar: "خد دش فاتر عشان تقلل درجة حرارة جسمك الداخلية وتهيأه للنوم العميق." } },
+                        { time: "Sleep Room", title: { en: "Strict Noise & Light Block", ar: "عزل تام للغرفة" }, desc: { en: "Silicon earplugs, white noise, and 100% dark room.", ar: "استخدم سدادات أذن وعزل تام للغرفة من أي إضاءة نهارية." } }
+                    ],
+                    tip: {
+                        en: "Daytime sleep is lighter due to biological clocks. The System utilizes light manipulation (dark glasses post-shift) and temperature control to force your body into deep REM phases.",
+                        ar: "النوم بالنهار بيكون خفيف بسبب الساعة البيولوجية. السيستم بيعتمد على حيل ذكية (زي لبس نضارة شمسية وإنت مروح الصبح) عشان نجبر جسمك يدخل في النوم العميق."
+                    }
+                }
+            },
+            busy: {
+                energy: {
+                    timeline: [
+                        { time: "Morning", title: { en: "Salt & Cold Water", ar: "مياه ساقعة وملح" }, desc: { en: "Drink cold water with a pinch of pink salt for immediate adrenal wake-up.", ar: "اشرب كوباية مياه ساقعة بملح خفيف عشان تنشط الدورة الدموية فوراً وتصحصح." } },
+                        { time: "Mid-Day", title: { en: "Standing Study/Work", ar: "مذاكرة/شغل وإنت واقف" }, desc: { en: "Stand up during classes/calls. Keeps dopamine active.", ar: "حاول تقف وإنت بتذاكر أو بتكلم حد، ده بينشط الدوبامين ويمنع الخمول." } },
+                        { time: "Late Afternoon", title: { en: "System Workout", ar: "تمرين السيستم" }, desc: { en: "Train to relieve cognitive fatigue and replace it with physical drive.", ar: "تمرينك هو اللي هيفصلك عن ضغط المذاكرة وهيجدد نشاطك البدني والذهني." } }
+                    ],
+                    tip: {
+                        en: "Mental fatigue is not physical fatigue. When your brain is tired from studying, your body needs movement to flush out waste products and restore cognitive performance.",
+                        ar: "التعب الذهني مش تعب بدني. لما دماغك تفصل من المذاكرة والشغل، جسمك بيحتاج حركة وتمرين عشان يجدد النشاط وتعرف ترجع تركز تاني بقوة."
+                    }
+                },
+                diet: {
+                    timeline: [
+                        { time: "Daytime", title: { en: "Protein Satiety Shielding", ar: "حماية الشبع بالبروتين" }, desc: { en: "Eat highly satiating protein sources at every major block.", ar: "ركز على وجبات بروتين مشبعة جداً طول اليوم عشان تمنع نوبات الجوع المفاجئة." } },
+                        { time: "Evening", title: { en: "Hydration Focus", ar: "تركيز المياه بالليل" }, desc: { en: "Drink carbonated water or zero soda to fill stomach volume when studying.", ar: "اشرب مياه فوارة أو صودا زيرو عشان تملى معدتك وإنت بتذاكر بالليل." } },
+                        { time: "Late Night", title: { en: "Low Calorie High Volume Snack", ar: "سناك حجم كبير وسعرات صفر" }, desc: { en: "Cucumber, Greek yogurt, or protein pudding if study hunger strikes.", ar: "لو جعت وإنت بتذاكر بالليل، سناك خيار أو زبادي يوناني هيكون منقذ وبدون سعرات تذكر." } }
+                    ],
+                    tip: {
+                        en: "Boredom and study stress trigger emotional eating. The System provides high-volume, low-calorie options that satisfy the hand-to-mouth habit without destroying your deficit.",
+                        ar: "الملل وضغط المذاكرة بيخليك تاكل بدون وعي. السيستم بيوفرلك بدائل حجمها كبير وسعراتها قليلة جداً تشبع رغبتك في الأكل من غير ما تخرب دايتك."
+                    }
+                },
+                time: {
+                    timeline: [
+                        { time: "Morning", title: { en: "30-Min Dumbbell System Routine", ar: "تمرين سريع 30 دقيقة" }, desc: { en: "Quick full-body workout at home or gym using simple movements.", ar: "تمرين سريع للجسم كامل بدمبلز في البيت أو الجيم لإنقاذ اليوم." } },
+                        { time: "Daytime", title: { en: "Passive Step Accumulation", ar: "تجميع خطوات غير مباشر" }, desc: { en: "Walk while listening to lectures or taking calls. Accumulate steps.", ar: "اسمع محاضراتك أو مكالماتك وإنت بتتمشى، كسبت خطوات وكسبت وقت." } },
+                        { time: "Post-study", title: { en: "Batch Preparation", ar: "تجهيز وجبات سريع" }, desc: { en: "Pre-pack snacks for the next day to prevent impulse buying at cafeteria.", ar: "جهة سناك بكره من بالليل عشان متشتريش أي أكل سريع وغير صحي من الكافتيريا." } }
+                    ],
+                    tip: {
+                        en: "A 30-minute workout is 2% of your day. The System designs ultra-compressed home workouts that ensure your physical progress doesn't stall during exams or heavy workloads.",
+                        ar: "تمرين 30 دقيقة هو 2% بس من يومك. السيستم بيصمملك تمارين منزلية سريعة بالدمبلز تضمن إن جسمك يفضل يتطور حتى في وقت الامتحانات وضغط الشغل."
+                    }
+                },
+                sleep: {
+                    timeline: [
+                        { time: "6:00 PM", title: { en: "System Workout", ar: "تمرين السيستم" }, desc: { en: "Burn off accumulated mental stress physically in the gym.", ar: "طلع كل ضغط يومك والمذاكرة في الجيم عشان تهيأ جسمك للاسترخاء." } },
+                        { time: "9:00 PM", title: { en: "Blue Light Blockers", ar: "نضارة حجب الضوء" }, desc: { en: "Wear blue blockers if studying on laptop late. Protects sleep quality.", ar: "البس نضارة حجب الضوء الأزرق لو بتذاكر على اللاب توب بالليل عشان تحمي جودة نومك." } },
+                        { time: "10:30 PM", title: { en: "Brain Dump Protocol", ar: "تفريغ الدماغ" }, desc: { en: "Write down tomorrow's to-do list to stop brain loops before bed.", ar: "اكتب كل اللي وراك لبكره في ورقة عشان تفصل تفكيرك وترتاح وتنام أسرع." } }
+                    ],
+                    tip: {
+                        en: "Study anxiety keeps your brain in high-alert beta waves. The 'Brain Dump' protocol signals safety to your nervous system, allowing you to fall asleep rapidly.",
+                        ar: "قلق المذاكرة بيخلي دماغك شغال في موجات التوتر. كتابة وراك إيه بكره في ورقة بيدي إشارة أمان لجهازك العصبي وبيخليك تنام في دقايق."
+                    }
+                }
+            },
+            travel: {
+                energy: {
+                    timeline: [
+                        { time: "Arrival", title: { en: "Rehydration Protocol", ar: "ترطيب عالي سريع" }, desc: { en: "Drink 1L water with electrolytes. Flying dehydrates cells severely.", ar: "اشرب لتر مياه بمحلول جفاف أو ملح خفيف. الطيران بيسبب جفاف شديد للخلايا وبيسبب الخمول." } },
+                        { time: "Mid-Day", title: { en: "Light Exposure Walk", ar: "مشي في ضوء الشمس" }, desc: { en: "Walk outside for 20 minutes to sync your body with the new time zone.", ar: "اتمشى بره 20 دقيقة عشان تظبط ساعتك البيولوجية مع البلد الجديدة." } },
+                        { time: "Evening", title: { en: "Hotel Gym Session", ar: "تمرين جيم الفندق" }, desc: { en: "Light active recovery session to flush out jet lag.", ar: "تمرين خفيف في جيم الفندق لتنشيط الدورة الدموية والتخلص من إرهاق السفر." } }
+                    ],
+                    tip: {
+                        en: "Jet lag is magnified by cell dehydration. Rehydrating immediately and getting direct sunlight sets your internal clock, preserving your energy levels.",
+                        ar: "إرهاق السفر بيزيد جداً بسبب جفاف الخلايا. شرب مياه كافية مع التعرض للشمس أول ما توصل بيظبط طاقتك ونشاطك علطول."
+                    }
+                },
+                diet: {
+                    timeline: [
+                        { time: "Flight", title: { en: "Fast & Hydrate", ar: "صيام وقت الرحلة" }, desc: { en: "Skip plane food (high sodium & fats). Drink pure water.", ar: "تجنب أكل الطيارة (بيكون فيه صوديوم ودهون عالية بتنفخ الجسم). اشرب مياه بس." } },
+                        { time: "Hotel", title: { en: "Stock The Fridge", ar: "تجهيز تلاجة الفندق" }, desc: { en: "Buy Greek yogurt, fruit, and clean protein from a local market immediately.", ar: "اشتري زبادي يوناني، فاكهة، وبروتين جاهز من السوبر ماركت القريب أول ما توصل." } },
+                        { time: "Dinner", title: { en: "Dining Out Protocol", ar: "نظام الأكل بره" }, desc: { en: "Order double protein (grilled meat/chicken) with double green salad.", ar: "اطلب بروتين مضاعف (لحمة أو فراخ مشوية) مع سلطة خضراء وتجنب الصوصات الدسمة." } }
+                    ],
+                    tip: {
+                        en: "Traveling exposes you to hyper-palatable foods. The System utilizes 'Dining Out' protocols, focusing on protein first to keep you full and prevent weight gain.",
+                        ar: "السفر بيعرضك لأكل مغري وسعراته عالية. السيستم بتاعنا بيعلمك بروتوكولات الأكل في المطاعم (التركيز على البروتين المشبع أولاً) عشان تستمتع من غير ما تزيد في الوزن."
+                    }
+                },
+                time: {
+                    timeline: [
+                        { time: "Morning", title: { en: "15-Min Hotel Room Routine", ar: "تمرين سريع في الغرفة" }, desc: { en: "High-intensity bodyweight protocol (Pushups, Squats, Planks).", ar: "تمرين سويدي مكثف في الغرفة (ضغط، بطن، سكوات) مش هياخد 15 دقيقة." } },
+                        { time: "Daytime", title: { en: "Explore Via Steps", ar: "المشي للاستكشاف" }, desc: { en: "Walk to your meetings or explore the city on foot. Hit 12,000 steps.", ar: "استكشف البلد مشي أو روح مشاويرك على رجلك. هدفنا 12000 خطوة حرق دهون تلقائي." } },
+                        { time: "Evening", title: { en: "Resistance Band Routine", ar: "تمرين استك بـ المقاومة" }, desc: { en: "Use portable bands in hotel room. Minimal gear, maximal result.", ar: "استخدم أحبال المقاومة في الغرفة. وزن خفيف في الشنطة بس تأثيره ممتاز للعضلات." } }
+                    ],
+                    tip: {
+                        en: "A lack of a gym is no excuse. The System equips you with high-efficiency hotel bodyweight and resistance band protocols that keep your muscles activated anywhere in the world.",
+                        ar: "عدم وجود جيم مش عذر. السيستم بيوفرلك تمارين مخصصة لغرف الفنادق بأحبال المقاومة، عشان تحافظ على كتلتك العضلية وتستمر في حرق الدهون في أي مكان."
+                    }
+                },
+                sleep: {
+                    timeline: [
+                        { time: "Sunset", title: { en: "Local Time Sync", ar: "التأقلم مع التوقيت المحلي" }, desc: { en: "Do not sleep until local bedtime. Force alignment.", ar: "ماتنامش نهائي بالنهار لحد ما يجي وقت النوم المحلي للبلد عشان تظبط يومك." } },
+                        { time: "Pre-Sleep", title: { en: "Magnesium Load", ar: "جرعة المغنسيوم" }, desc: { en: "Take Magnesium Glycinate to calm nervous system stimulation from travel.", ar: "خد جرعة المغنسيوم عشان تهدي جهازك العصبي بعد ضغط السفر والمطار." } },
+                        { time: "Sleep Room", title: { en: "Hotel Room Darkness Lock", ar: "تعتيم غرفة الفندق" }, desc: { en: "Clip hotel curtains tight to block all street lights. Use eye mask.", ar: "اقفل ستاير الفندق كويس جداً واقفل أي إضاءة للتكييف أو التلفزيون." } }
+                    ],
+                    tip: {
+                        en: "Sleeping in a new hotel room triggers a biological 'first-night effect' (half the brain stays alert). Blocking all sensory inputs (eye mask, eye plugs) is critical to override this response.",
+                        ar: "النوم في مكان جديد بيخلي نص عقلك صاحي كحماية طبيعية. عزل الإضاءة والصوت تماماً واستخدام سدادات أذن هو الحل عشان تدخل في نوم عميق علطول."
+                    }
+                }
             }
         };
-        
-        waterInput.addEventListener('input', calcWater);
-        calcWater(); // run initial
+
+        const renderTimeline = (lifestyle, bottleneck) => {
+            const data = routineData[lifestyle][bottleneck];
+            if (!data) return;
+
+            // Render Timeline items
+            timelineContainer.innerHTML = '';
+            data.timeline.forEach(item => {
+                const titleText = currentLang === 'ar' ? item.title.ar : item.title.en;
+                const descText = currentLang === 'ar' ? item.desc.ar : item.desc.en;
+                const dirAttr = currentLang === 'ar' ? 'dir="rtl"' : '';
+                
+                const itemHtml = `
+                    <div class="timeline-item">
+                        <span class="timeline-time">${item.time}</span>
+                        <div class="timeline-content" ${dirAttr}>
+                            <h4 class="timeline-title">${titleText}</h4>
+                            <p class="timeline-desc">${descText}</p>
+                        </div>
+                    </div>
+                `;
+                timelineContainer.insertAdjacentHTML('beforeend', itemHtml);
+            });
+
+            // Render Coach Tip
+            coachTipText.innerHTML = currentLang === 'ar' ? data.tip.ar : data.tip.en;
+            if (currentLang === 'ar') {
+                coachTipText.setAttribute('dir', 'rtl');
+            } else {
+                coachTipText.removeAttribute('dir');
+            }
+        };
+
+        const getActiveSelection = () => {
+            const activeLifestyleBtn = document.querySelector('#lifestyle-options .opt-btn.active');
+            const activeBottleneckBtn = document.querySelector('#bottleneck-options .opt-btn.active');
+            return {
+                lifestyle: activeLifestyleBtn ? activeLifestyleBtn.getAttribute('data-lifestyle') : 'office',
+                bottleneck: activeBottleneckBtn ? activeBottleneckBtn.getAttribute('data-bottleneck') : 'energy'
+            };
+        };
+
+        // Hook language switches
+        updateRoutineOptimizerLanguage = () => {
+            const current = getActiveSelection();
+            renderTimeline(current.lifestyle, current.bottleneck);
+        };
+
+        // Attach click listeners to Lifestyle buttons
+        lifestyleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                lifestyleBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const current = getActiveSelection();
+                renderTimeline(btn.getAttribute('data-lifestyle'), current.bottleneck);
+            });
+        });
+
+        // Attach click listeners to Bottleneck buttons
+        bottleneckBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                bottleneckBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const current = getActiveSelection();
+                renderTimeline(current.lifestyle, btn.getAttribute('data-bottleneck'));
+            });
+        });
+
+        // Run initial render (Office + Energy)
+        renderTimeline('office', 'energy');
     }
 
 
